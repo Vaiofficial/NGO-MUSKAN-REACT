@@ -8,6 +8,8 @@ module.exports = {
       colors: {
         DonateGreen: '#3fea2c',
         NavColor: '#FFC0D9',
+        AboutColor :'#EEEDEB',
+        CampaignColor:'#ffc1ca'
       },
     },
   },
