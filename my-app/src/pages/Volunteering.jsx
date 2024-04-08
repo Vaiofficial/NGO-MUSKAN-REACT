@@ -1,12 +1,12 @@
 import React from "react";
 import PageLayout from "../components/PageLayout";
 
-const Mens = () => {
-  return (
+const Volunteering = () => {
+  return(
     <PageLayout>
-      <h1>Hello Mens</h1>
+      <h1>Hello Volunteering</h1>
     </PageLayout>
   );
 };
 
-export default Mens;
+export default Volunteering;
