@@ -1,11 +1,6 @@
 
 .slick-slide div{
-  margin: 0 10px;
-}
-/* Custom styles for slider arrows */
-.slick-next:before,
-.slick-prev:before {
-  color: black; /* Change arrow color here */
+  margin: 0 15px;
 }
 
 .App {

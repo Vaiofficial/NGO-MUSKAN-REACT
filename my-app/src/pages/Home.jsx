@@ -10,6 +10,7 @@ import { NavLink } from "react-router-dom";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import PeopleSay from "../components/PeopleSay";
 
 // campaign data for sliding
 const data = [
@@ -34,6 +35,8 @@ const data = [
     img: Education,
   },
 ];
+
+
 
 const Home = () => {
   const settings = {
@@ -73,15 +76,12 @@ const Home = () => {
       },
     ],
   };
-
-  // Custom arrow components
-
   return (
     <PageLayout>
       {/* Text and image container Section Starts Here */}
       <div className="relative">
         {/* Text overlay */}
-        <div className="absolute top-full sm:top-1/3 lg:top-1/3 left-0 text-black p-8">
+        <div className="absolute top-full sm:top-1/3 lg:top-1/3 left-0 text-black">
           <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-7xl font-bold text-pink-500 py-2 sm:py-3">
             United for Good:
           </h1>
@@ -106,7 +106,7 @@ const Home = () => {
       {/* Text and image container Section Ends Here */}
 
       {/* WHO WE ARE SECTION IN HOME PAGE STARTS HERE*/}
-      <div className="mt-56 sm:my-28 md:my-12 px-8 py-4 md:p-8">
+      <div className="mt-56 sm:my-28 md:my-12 py-4">
         {/* Heading about us */}
         <div className="items-center">
           <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold">
@@ -158,6 +158,11 @@ const Home = () => {
         </div>
       </div>
       {/* CAMPAIGNS SECTION Ends Here */}
+
+      {/* People Says SECTION STARTS HERE */}
+      <PeopleSay></PeopleSay>
+      {/* People Says SECTION ENDS HERE */}
+      
     </PageLayout>
   );
 };

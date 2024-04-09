@@ -9,7 +9,8 @@ module.exports = {
         DonateGreen: '#3fea2c',
         NavColor: '#FFC0D9',
         AboutColor :'#EEEDEB',
-        CampaignColor:'#ffc1ca'
+        CampaignColor:'#ffc1ca',
+        PeopleColor :'#d7d2c9'
       },
     },
   },
