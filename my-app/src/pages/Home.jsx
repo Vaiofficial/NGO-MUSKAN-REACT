@@ -11,6 +11,8 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import PeopleSay from "../components/PeopleSay";
+import ContactUs from "../components/ContactUs";
+import Work from "../components/Work";
 
 // campaign data for sliding
 const data = [
@@ -35,8 +37,6 @@ const data = [
     img: Education,
   },
 ];
-
-
 
 const Home = () => {
   const settings = {
@@ -162,7 +162,14 @@ const Home = () => {
       {/* People Says SECTION STARTS HERE */}
       <PeopleSay></PeopleSay>
       {/* People Says SECTION ENDS HERE */}
-      
+
+      {/* WORK DONE Section Starts Here */}
+      <Work></Work>
+      {/* WORK DONE Section Ends Here */}
+
+      {/* CONTACT US PAGE STARTS HERE */}
+      <ContactUs></ContactUs>
+      {/* CONTACT US PAGE ENDS HERE */}
     </PageLayout>
   );
 };

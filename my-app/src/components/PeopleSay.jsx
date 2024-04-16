@@ -65,7 +65,7 @@ const PeopleSay = () => {
       const height = commentsRef.current.getBoundingClientRect().height;
       setMaxHeight(height);
     }
-  }, [peopleSay]);
+  }, []);
 
   return (
     <div className="mt-10 sm:mt-20">
