@@ -67,7 +67,7 @@ const ContactUs = () => {
             <img
               src={EducationImage}
               alt="Education"
-              className="hidden md:block mx-auto mt-14  rounded-full w-32 h-32"
+              className="hidden md:block mx-auto mt-14 rounded-full w-32 h-32"
             />
           </div>
           <div className="mb-4">

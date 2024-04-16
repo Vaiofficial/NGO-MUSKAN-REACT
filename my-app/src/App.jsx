@@ -5,7 +5,7 @@ import About from "./pages/About";
 import Events from "./pages/Events";
 import Home from "./pages/Home";
 import Mens from "./pages/Mens";
-// import Footer from "./pages/Footer";
+import Footer from "./components/Footer"
 import Donate from "./pages/Donate";
 import Volunteering from "./pages/Volunteering";
 import Impacts from "./pages/Impacts";
@@ -23,7 +23,7 @@ function App() {
         <Route path="/impacts" element={<Impacts />}></Route>
         <Route path="/volunteering" element={<Volunteering />}></Route>
       </Routes>
-      {/* <Footer /> */}
+      <Footer />
     </BrowserRouter>
   );
 }
