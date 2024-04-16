@@ -22,6 +22,18 @@ const ContactUs = () => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
+
+     // Validate form fields
+     const formData = new FormData(form.current);
+     const name = formData.get("user_name");
+     const email = formData.get("user_email");
+     const message = formData.get("message");
+ 
+     if (!name || !email || !message) {
+       toast.error("Please fill out all fields!");
+       return;
+     }
+
     console.log("Form submitted:", form.current);
     emailjs
       .sendForm("service_coxtn19", "template_hmn7yvn", form.current, {
@@ -55,7 +67,7 @@ const ContactUs = () => {
             <img
               src={EducationImage}
               alt="Education"
-              className="hidden md:block mx-auto mt-4 rounded-full w-32 h-32"
+              className="hidden md:block mx-auto mt-14  rounded-full w-32 h-32"
             />
           </div>
           <div className="mb-4">
@@ -117,6 +129,7 @@ const ContactUs = () => {
       <div className="w-full md:w-1/2">
         <img
           src={EducationImage}
+          alt=""
           className="w-full h-full object-cover rounded-md"
         />
       </div>
