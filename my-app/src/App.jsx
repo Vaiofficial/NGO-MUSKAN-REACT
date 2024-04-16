@@ -9,11 +9,13 @@ import Footer from "./components/Footer"
 import Donate from "./pages/Donate";
 import Volunteering from "./pages/Volunteering";
 import Impacts from "./pages/Impacts";
+import SocialLinks from "./components/SocialLinks";
 
 function App() {
   return (
     <BrowserRouter>
       <Navbar />
+      <SocialLinks/>
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/about" element={<About />}></Route>

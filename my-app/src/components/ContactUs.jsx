@@ -23,16 +23,16 @@ const ContactUs = () => {
   const handleFormSubmit = (e) => {
     e.preventDefault();
 
-     // Validate form fields
-     const formData = new FormData(form.current);
-     const name = formData.get("user_name");
-     const email = formData.get("user_email");
-     const message = formData.get("message");
- 
-     if (!name || !email || !message) {
-       toast.error("Please fill out all fields!");
-       return;
-     }
+    // Validate form fields
+    const formData = new FormData(form.current);
+    const name = formData.get("user_name");
+    const email = formData.get("user_email");
+    const message = formData.get("message");
+
+    if (!name || !email || !message) {
+      toast.error("Please fill out all fields!");
+      return;
+    }
 
     console.log("Form submitted:", form.current);
     emailjs
@@ -66,7 +66,7 @@ const ContactUs = () => {
             <h1 className="font-bold text-4xl">Become a Volunteer</h1>
             <img
               src={EducationImage}
-              alt="Education"
+              alt=""
               className="hidden md:block mx-auto mt-14 rounded-full w-32 h-32"
             />
           </div>
