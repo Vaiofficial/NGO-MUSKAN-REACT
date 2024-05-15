@@ -14,6 +14,7 @@ import PeopleSay from "../components/PeopleSay";
 import ContactUs from "../components/ContactUs";
 import Work from "../components/Work";
 
+
 // campaign data for sliding
 const data = [
   {
@@ -134,7 +135,7 @@ const Home = () => {
       {/* WHO WE ARE SECTION IN HOME PAGE ENDS HERE */}
 
       {/* CAMPAIGNS SECTION STARTS HERE */}
-      <div className="">
+      <div >
         <div className="mt-10 sm:mt-20">
           <Slider {...settings}>
             {data.map((d, index) => (
