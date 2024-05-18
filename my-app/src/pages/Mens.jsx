@@ -21,26 +21,31 @@ const data = [
     name: `Menstrual Health Workshops`,
     img: FoodDonation,
     description: `Muskan NGO organizes interactive workshops to educate women and girls about menstrual health, hygiene, and reproductive anatomy. These workshops provide crucial information on menstrual cycle management, proper hygiene practices, and debunking myths and taboos surrounding menstruation.`,
+    id:1
   },
   {
     name: `Sanitary Pad Distribution`,
     img: OldAgeCare,
     description: `Muskan NGO distributes free sanitary pads to women and girls in underprivileged communities who lack access to menstrual hygiene products. By providing these essential items, we ensure that individuals can manage their periods safely and with dignity, enabling them to attend school or work without interruption.`,
+    id:2
   },
   {
     name: `Community Awareness Campaigns`,
     img: PlantCare,
     description: `Muskan NGO conducts community-wide awareness campaigns to challenge societal stigmas and misconceptions related to menstruation. Through street plays, poster exhibitions, and informational sessions, we aim to normalize conversations about periods and promote menstrual health as a natural aspect of women's lives.`,
+    id:3
   },
   {
     name: `School Hygiene Programs`,
     img: AnimalCare,
     description: `Muskan NGO implements hygiene programs in schools, educating both students and teachers about menstrual health and hygiene management. We advocate for the establishment of clean and private toilet facilities equipped with sanitary disposal systems, creating a supportive environment for menstruating students.`,
+    id:4
   },
   {
     name: `Advocacy and Policy Engagement`,
     img: Education,
     description: `Muskan NGO actively engages with policymakers and government authorities to advocate for policies that prioritize menstrual health and hygiene. We lobby for the integration of menstrual hygiene management into school curricula, the allocation of budgets for sanitary pad provision in public facilities, and the implementation of supportive workplace policies for menstruating employees. Through advocacy efforts, we aim to create lasting systemic change and ensure menstrual equity for all.`,
+    id:5
   },
 ];
 
@@ -166,8 +171,9 @@ const Mens = () => {
               </h2>
             </div>
             <Slider {...settings}>
-              {data.map((d, index) => (
+              {data.map((d) => (
                 <MuskanDoing
+                  key={d.id}
                   name={d.name}
                   image={d.img}
                   description={d.description}
@@ -194,7 +200,7 @@ const Mens = () => {
                 organization.
               </p>
             </div>
-            <NavLink to="/donate">
+            <NavLink to="/">
               <button className="bg-DonateGreen rounded-full px-6 py-1 sm:px-7 sm:py-4 text-base sm:text-xl text-black font-semibold">
                 Share Now
               </button>
@@ -232,9 +238,9 @@ const Issue = ({ name, image, description }) => {
 };
 
 // WHAT MUSKAN DOING SECTION FUNCTION
-const MuskanDoing = ({ name, image, description }) => {
+const MuskanDoing = ({ name, image, description , id}) => {
   return (
-    <div className="rounded-md bg-white overflow-hidden group relative transition duration-300 ease-in-out transform hover:scale-105">
+    <div key={id} className="rounded-md bg-white overflow-hidden group relative transition duration-300 ease-in-out transform hover:scale-105">
       <div
         className="h-96 bg-cover bg-top rounded-md relative w-full"
         style={{ backgroundImage: `url(${image})` }}

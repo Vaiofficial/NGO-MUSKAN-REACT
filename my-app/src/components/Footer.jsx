@@ -116,29 +116,29 @@ export default function App() {
               Our Works
             </h6>
             <p className="mb-4">
-              <a className="text-neutral-600 dark:text-neutral-200">
+              <button className="text-neutral-600 dark:text-neutral-200">
                 Education Support
-              </a>
+              </button>
             </p>
             <p className="mb-4">
-              <a className="text-neutral-600 dark:text-neutral-200">
+              <button className="text-neutral-600 dark:text-neutral-200">
                 Food Donation
-              </a>
+              </button>
             </p>
             <p className="mb-4">
-              <a className="text-neutral-600 dark:text-neutral-200">
+              <button className="text-neutral-600 dark:text-neutral-200">
                 Old Age Care
-              </a>
+              </button>
             </p>
             <p className="mb-4">
-              <a className="text-neutral-600 dark:text-neutral-200">
+              <button className="text-neutral-600 dark:text-neutral-200">
                 Animals Care
-              </a>
+              </button>
             </p>
             <p>
-              <a className="text-neutral-600 dark:text-neutral-200">
+              <button className="text-neutral-600 dark:text-neutral-200">
                 Plants Care
-              </a>
+              </button>
             </p>
           </div>
 
@@ -210,7 +210,7 @@ export default function App() {
         <span>© 2024 Copyright: </span>
         <a
           className="font-semibold text-neutral-600 dark:text-neutral-400"
-          href="https://tw-elements.com/"
+          href="/"
         >
           NGO Muskan
         </a>

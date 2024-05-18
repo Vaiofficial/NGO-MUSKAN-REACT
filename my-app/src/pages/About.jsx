@@ -9,15 +9,14 @@ import Saumya from "../images/Saumya.jpg";
 import { FaLinkedin } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 
-
 const About = () => {
   return (
     <PageLayout>
-      <div className="mb-10 mt-10">
+      <div className="px-5 sm:px-10 lg:px-20">
         {/* About section */}
-        <div className="flex flex-col lg:flex-row items-center justify-center">
+        <div className="flex flex-col lg:flex-row items-center justify-center py-10">
           {/* Text section */}
-          <div className="lg:w-1/2 lg:mr-10 mb-10 lg:mb-0">
+          <div className="lg:w-1/2 lg:mr-10 mb-10 lg:mb-0 text-center lg:text-left">
             <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-pink-500 py-2 sm:py-3">
               Promote menstrual equity and knowledge to empower women
             </h1>
@@ -28,7 +27,7 @@ const About = () => {
                 where women and girls are not discriminated against or oppressed
                 because of their menstrual status.
               </p>
-              <p className="text-lg lg:text-xl">
+              <p className="text-lg lg:text-xl mb-10">
                 In addition to our work in menstrual health and hygiene, we also
                 focus on promoting H.E.F.A.O. - Health care, Environment
                 restoration, Food, and Animal welfare - to improve the overall
@@ -41,7 +40,7 @@ const About = () => {
             <img
               src={MensurationHead}
               alt="MensurationHead"
-              className="w-full"
+              className="w-full rounded-lg shadow-lg"
             />
           </div>
         </div>
@@ -91,29 +90,38 @@ const About = () => {
             </div>
           </div>
         </div>
+        
         {/* Join us & support us section */}
-        <div className="mt-10 lg:mt-20">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="rounded-md overflow-hidden group relative transition duration-300 ease-in-out transform hover:scale-105">
-              <div
-                className="w-full h-96 bg-cover bg-center rounded-md flex justify-center items-center group-hover:bg-opacity-75 transition duration-300 ease-in-out filter blur-none hover:blur-sm relative"
-                style={{ backgroundImage: `url(${VolunteerImage})` }}
-              >
-                <button className="bg-DonateGreen rounded-full px-6 py-3 text-xl font-semibold absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 hidden group-hover:block transition duration-300 ease-in-out">
-                  Join us
-                </button>
+        <div className="mt-10 lg:mt-20 grid grid-cols-1 md:grid-cols-2 gap-8">
+          {/* Join Us */}
+          <div className="rounded-md overflow-hidden group relative transition duration-300 ease-in-out transform hover:scale-105">
+            <div
+              className="w-full h-80 md:h-96 bg-cover bg-center rounded-md flex justify-center items-center group-hover:bg-opacity-75 transition duration-300 ease-in-out relative"
+              style={{ backgroundImage: `url(${VolunteerImage})` }}
+            >
+              <div className="absolute inset-0 flex flex-col justify-center items-center">
+                <NavLink
+                  to="/"
+                  className="bg-DonateGreen text-white px-6 py-3 text-xl font-semibold rounded-full transition duration-300 ease-in-out opacity-0 group-hover:opacity-100"
+                >
+                  Join Us
+                </NavLink>
               </div>
             </div>
+          </div>
 
-            <div className="rounded-md overflow-hidden group relative transition duration-300 ease-in-out transform hover:scale-105">
-              <div
-                className="w-full h-96 bg-cover bg-center rounded-md flex justify-center items-center group-hover:bg-opacity-75 transition duration-300 ease-in-out filter blur-none hover:blur-sm relative"
-                style={{ backgroundImage: `url(${ChildrenImage})` }}
-              >
-                <NavLink to="/donate">
-                  <button className="bg-DonateGreen rounded-full px-6 py-3 text-xl font-semibold absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 hidden group-hover:block transition duration-300 ease-in-out">
-                    Donate
-                  </button>
+          {/* Support Us */}
+          <div className="rounded-md overflow-hidden group relative transition duration-300 ease-in-out transform hover:scale-105">
+            <div
+              className="w-full h-80 md:h-96 bg-cover bg-center rounded-md flex justify-center items-center group-hover:bg-opacity-75 transition duration-300 ease-in-out relative"
+              style={{ backgroundImage: `url(${ChildrenImage})` }}
+            >
+              <div className="absolute inset-0 flex flex-col justify-center items-center">
+                <NavLink
+                  to="/donate"
+                  className="bg-DonateGreen text-white px-6 py-3 text-xl font-semibold rounded-full transition duration-300 ease-in-out opacity-0 group-hover:opacity-100"
+                >
+                  Support Us
                 </NavLink>
               </div>
             </div>
