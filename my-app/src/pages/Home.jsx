@@ -14,8 +14,6 @@ import PeopleSay from "../components/PeopleSay";
 import ContactUs from "../components/ContactUs";
 import Work from "../components/Work";
 
-
-// campaign data for sliding
 const data = [
   {
     name: `Food Donation`,
@@ -79,9 +77,7 @@ const Home = () => {
   };
   return (
     <PageLayout>
-      {/* Text and image container Section Starts Here */}
       <div className="relative">
-        {/* Text overlay */}
         <div className="absolute top-full sm:top-1/3 lg:top-1/3 left-0 text-black">
           <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-7xl font-bold text-pink-500 py-2 sm:py-3">
             United for Good:
@@ -89,7 +85,6 @@ const Home = () => {
           <h1 className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-4xl font-bold py-2 sm:py-3">
             Building a Brighter Future for All{" "}
           </h1>
-          {/* Hide the <p> tag until lg breakpoint */}
           <p className="hidden xl:block text-sm sm:text-base md:text-lg py-2 font-semibold">
             Together, we amplify compassion and build a brighter future for all.
           </p>
@@ -101,20 +96,15 @@ const Home = () => {
             </NavLink>
           </div>
         </div>
-        {/* Image */}
         <img src={backgroundImage} alt="Background" className="w-full" />
       </div>
-      {/* Text and image container Section Ends Here */}
 
-      {/* WHO WE ARE SECTION IN HOME PAGE STARTS HERE*/}
       <div className="mt-56 sm:my-28 md:my-12 py-4">
-        {/* Heading about us */}
         <div className="items-center">
           <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold">
             WHO WE ARE - NGO MUSKAN
           </h1>
         </div>
-        {/* para about us */}
         <div className="my-8">
           <p className="text-lg sm:text-2xl">
             NGO Muskan is a youth led N.G.O. which visions at eradicating the
@@ -124,53 +114,42 @@ const Home = () => {
             Animals, Old Age and Children.
           </p>
         </div>
-        <div>
+        <div className="my-8">
           <NavLink to="/about">
-            <button className="bg-slate-500 text-white font-bold px-5 py-3 rounded-full">
+            <button className="bg-pink-500 rounded-full px-6 py-3 text-lg font-semibold text-white">
               View More
             </button>
           </NavLink>
         </div>
       </div>
-      {/* WHO WE ARE SECTION IN HOME PAGE ENDS HERE */}
-
-      {/* CAMPAIGNS SECTION STARTS HERE */}
-      <div >
-        <div className="mt-10 sm:mt-20">
-          <Slider {...settings}>
-            {data.map((d, index) => (
-              <div
-                key={index}
-                className="bg-CampaignColor rounded-lg h-[300px]"
-              >
-                <div className="h-56 rounded-2xl flex items-center justify-center">
-                  <img
-                    src={d.img}
-                    alt={d.name}
-                    className="h-44 w-44 rounded-full"
-                  />
-                </div>
-                <div className="bg-white text-center text-2xl font-semibold py-3 rounded-lg">
-                  <h2>{d.name}</h2>
-                </div>
-              </div>
-            ))}
-          </Slider>
-        </div>
+      <div className="my-12 py-4">
+        <h1 className="text-center text-2xl sm:text-3xl md:text-4xl font-bold my-4">
+          OUR CAUSES
+        </h1>
+        <Slider {...settings}>
+          {data.map((d, i) => (
+            <div key={i} className="px-2">
+              <img
+                src={d.img}
+                alt={d.name}
+                className="rounded-xl w-full h-64 sm:h-96 object-cover"
+              />
+              <h1 className="text-xl sm:text-2xl text-center font-bold mt-2">
+                {d.name}
+              </h1>
+            </div>
+          ))}
+        </Slider>
       </div>
-      {/* CAMPAIGNS SECTION Ends Here */}
-
-      {/* People Says SECTION STARTS HERE */}
-      <PeopleSay></PeopleSay>
-      {/* People Says SECTION ENDS HERE */}
-
-      {/* WORK DONE Section Starts Here */}
-      <Work></Work>
-      {/* WORK DONE Section Ends Here */}
-
-      {/* CONTACT US PAGE STARTS HERE */}
-      <ContactUs></ContactUs>
-      {/* CONTACT US PAGE ENDS HERE */}
+      <div className="my-8 py-4">
+        <Work />
+      </div>
+      <div className="my-12 py-4">
+        <PeopleSay />
+      </div>
+      <div className="my-12 py-4">
+        <ContactUs />
+      </div>
     </PageLayout>
   );
 };

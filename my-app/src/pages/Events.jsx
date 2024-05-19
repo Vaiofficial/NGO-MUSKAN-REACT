@@ -1,11 +1,12 @@
-import React from "react";
-import PageLayout from "../components/PageLayout";
+import React from 'react';
+import EventList from '../components/EventList';
 
 const Events = () => {
   return (
-    <PageLayout>
-      <h1>Hello Events</h1>
-    </PageLayout>
+    <div className="events-page bg-gray-100 min-h-screen py-10">
+      <h1 className="text-4xl font-bold text-center mb-10">Upcoming Events</h1>
+      <EventList />
+    </div>
   );
 };
 

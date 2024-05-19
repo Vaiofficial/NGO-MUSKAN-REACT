@@ -12,6 +12,9 @@ import Volunteering from "./pages/Volunteering";
 // import Impacts from "./pages/Impacts";
 import SocialLinks from "./components/SocialLinks";
 import Gallery from "./pages/Gallery";
+import Admin from "./pages/Admin";
+import Signup from "./pages/Signup";
+import Signin from "./pages/Signin";
 
 function App() {
   return (
@@ -23,10 +26,13 @@ function App() {
         <Route path="/" element={<Home />}></Route>
         <Route path="/about" element={<About />}></Route>
         <Route path="/events" element={<Events />}></Route>
+        <Route path="/admin" element={<Admin/>} />
         <Route path="/mens" element={<Mens />}></Route>
         <Route path="/donate" element={<Donate />}></Route>
         <Route path="/gallery" element={<Gallery />}></Route>
         <Route path="/volunteering" element={<Volunteering />}></Route>
+        <Route path="/Signup" element={<Signup />}></Route>
+        <Route path="/Signin" element={<Signin />}></Route>
       </Routes>
       <Footer />
     </BrowserRouter>

@@ -43,7 +43,7 @@ const Volunteering = () => {
             <img
               src={Mens1}
               alt="StruggleWoman"
-              className="w-full rounded-lg shadow-lg"
+              className="w-full rounded-lg"
             />
           </div>
         </div>

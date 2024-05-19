@@ -7,7 +7,7 @@ const Header = () => {
         <div className="flex justify-end items-center gap-5">
           <ul className="flex flex-col sm:flex-row items-center gap-2 sm:gap-5">
             <li>
-              <h2 className="text-base sm:text-lg">+91 1111122222</h2>
+              <h2 className="text-base sm:text-lg">+91 9870221738</h2>
             </li>
             <li>
               <h2 className="text-base sm:text-lg">NGOMuskan@gmail.com</h2>
