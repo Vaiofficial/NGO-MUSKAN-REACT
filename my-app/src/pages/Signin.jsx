@@ -1,11 +1,19 @@
 import React, { useState } from "react";
 import { Link,useNavigate  } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+const {
+  signInStart,
+  signInFailure,
+  signInSuccess,
+} = require("../redux/user/userSlice");
 
 export default function SignIn() {
   const [formData, setFormData] = useState({});
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(false);
+  // const [error, setError] = useState(null);
+  // const [loading, setLoading] = useState(false);
+  const { loading, error } = useSelector((state) => state.user);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   //spread operator ka use kar rhe hai , jab user let username field mai kuch likha and dusre field mai likhega to dusre field ka data hatega nahi.
   const handleChange = (e) => {
@@ -19,7 +27,8 @@ export default function SignIn() {
     //preventdefault se loading effect handle karrhe h , signup click karne par jo hota hai.
     e.preventDefault();
     try {
-      setLoading(true);
+      // setLoading(true);
+      dispatch(signInStart());
       const res = await fetch("http://localhost:5000/api/auth/signin", {
         method: "POST",
         headers: {
@@ -29,17 +38,20 @@ export default function SignIn() {
       });
       const data = await res.json();
       if (data.success === false) {
-        setLoading(false);
-        setError(data.message);
+        // setLoading(false);
+        // setError(data.message);
+        dispatch(signInFailure(data.message));
         return;
       }
-      setLoading(false);
-      setError(null)
+      // setLoading(false);
+      // setError(null)
+      dispatch(signInSuccess(data));
       //successfully signup hua to login page par redirect kar dere hai.
       navigate("/");
     } catch (error) {
-      setLoading(false)
-      setError(error.message);
+      // setLoading(false)
+      // setError(error.message);
+      dispatch(signInFailure(error.message));
     }
   };
   console.log(formData);
