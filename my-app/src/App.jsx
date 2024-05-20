@@ -31,8 +31,8 @@ function App() {
         <Route path="/donate" element={<Donate />}></Route>
         <Route path="/gallery" element={<Gallery />}></Route>
         <Route path="/volunteering" element={<Volunteering />}></Route>
-        <Route path="/Signup" element={<Signup />}></Route>
-        <Route path="/Signin" element={<Signin />}></Route>
+        <Route path="/signup" element={<Signup />}></Route>
+        <Route path="/signin" element={<Signin />}></Route>
       </Routes>
       <Footer />
     </BrowserRouter>
