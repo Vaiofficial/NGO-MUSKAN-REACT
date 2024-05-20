@@ -81,7 +81,7 @@ export default function SignUp() {
       {/* Bottom text */}
       <div className="flex gap-2 mt-5">
         <p>Have an account ?</p>
-        <Link to={"/sign-in"}>
+        <Link to={"/signin"}> 
           <span className="text-red-600">Sign in</span>
         </Link>
       </div>

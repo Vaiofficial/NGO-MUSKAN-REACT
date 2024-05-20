@@ -42,7 +42,7 @@ const Navbar = () => {
               <NavLink to="/volunteering" className="text-slate-800">
                 Volunteering
               </NavLink>
-              <NavLink to="/sigin" className="text-slate-800">
+              <NavLink to="/signin" className="text-slate-800">
                 Signin
               </NavLink>
               <NavLink to="/donate" className="text-slate-800">
