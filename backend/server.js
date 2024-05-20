@@ -3,6 +3,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const connectDB = require('./db');
 const eventRoutes = require('./routes/eventRoutes');
+const userRouter  = require('./routes/user.route')
 require('dotenv').config();
 
 const app = express();
@@ -16,8 +17,10 @@ app.use(bodyParser.json());
 connectDB();
 
 // Routes
-app.use('/api/events', eventRoutes);
+app.use('/api/user', eventRoutes);
 
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
 });
+
+app.use('/api/user', userRouter);
