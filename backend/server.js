@@ -19,10 +19,9 @@ app.use(express.json());
 connectDB();
 
 // Routes
-app.use('/api/events', eventRoutes); // Assuming this handles events, adjust as needed
+app.use('/api/events', eventRoutes);  
 app.use('/api/user', userRouter);
-app.use('/api/auth', authRouter); // Removed the extra space
-
+app.use('/api/auth', authRouter); 
 // middleware
 app.use((err , req , res , next)=>{
     const statusCode = err.statusCode || 500;
