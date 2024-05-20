@@ -1,27 +1,29 @@
-import { combineReducers, configureStore } from '@reduxjs/toolkit'
-import useReducer from './user/userSlice';
-import {persistReducer , persistStore} from "redux-persist";
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
+import userReducer from './user/userSlice';
+import { persistReducer, persistStore } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
-//we can combine multiple reducers here , we have just user reducer now.
-const rootReducer = combineReducers({ user : useReducer});
+// Combine multiple reducers; we currently have just the user reducer.
+const rootReducer = combineReducers({ user: userReducer });
 
-//it is setting the name of the key in the local storage , version and storage.
+// Configure persist settings
 const persistConfig = {
-    key:'root',
+    key: 'root',
     storage,
-    version : 1,
+    version: 1,
 };
 
-const persistedReducer =  persistReducer(persistConfig , rootReducer);
+// Create a persisted reducer
+const persistedReducer = persistReducer(persistConfig, rootReducer);
 
+// Configure and create the Redux store
 export const store = configureStore({
-    reducer:persistedReducer,
-    middleware:(getDefaultMiddleware)=>
+    reducer: persistedReducer,
+    middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({
-            serializableCheck:false,
+            serializableCheck: false,
         }),
 });
 
-//this persistor will make the store persist
-export const persistor  = persistStore(store); 
+// Create a persistor to persist the store
+export const persistor = persistStore(store);
