@@ -39,7 +39,7 @@ module.exports.signin = async (req, res, next) => {
 
     res.cookie("access_token", token, { httpOnly: true })
       .status(200)
-      .json(rest);
+      .json({success: true, token});
   } catch (error) {
     next(error);
   }
