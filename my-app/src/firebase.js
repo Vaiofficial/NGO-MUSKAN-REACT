@@ -5,7 +5,8 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyCmSGovNUwG6qy-otesKgGXCdcaNVUdbXg ",
+  // agaar ye kaam ni kiya to direct yha key put karke dekho.
+  apiKey: "process.env.REACT_APP_FIREBASE_API_KEY",
   authDomain: "ngo-muskan.firebaseapp.com",
   projectId: "ngo-muskan",
   storageBucket: "ngo-muskan.appspot.com",

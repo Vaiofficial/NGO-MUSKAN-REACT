@@ -83,7 +83,7 @@ export default function SignIn() {
         >
           {loading ? "Loading..." : "Sign Up"}
         </button>
-        {/* google login page */}
+        {/* google login */}
         {/* <OAuth>
           
         </OAuth> */}
