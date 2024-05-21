@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link,useNavigate  } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import OAuth from "../components/OAuth";
 const {
   signInStart,
   signInFailure,
@@ -82,6 +83,10 @@ export default function SignIn() {
         >
           {loading ? "Loading..." : "Sign Up"}
         </button>
+        {/* google login page */}
+        {/* <OAuth>
+          
+        </OAuth> */}
       </form>
 
       {/* Bottom text */}

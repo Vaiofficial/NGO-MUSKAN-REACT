@@ -1,9 +1,14 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import logoImage from "../images/Muskan2.png";
+import User from "../images/User1.png";
 import PageLayout from "../components/PageLayout";
+import {useSelector} from "react-redux"
 
 const Navbar = () => {
+
+  const {currentUser} = useSelector(state=>state.user)
+
   const [showMenu, setShowMenu] = useState(false);
 
   const toggleMenu = () => {
@@ -20,32 +25,36 @@ const Navbar = () => {
                 <img src={logoImage} alt="Logo" className="h-16" />
               </NavLink>
             </div>
-            <div className="hidden space-x-3 lg:space-x-7 md:flex text-sm lg:text-base font-semibold items-center">
-              <NavLink to="/" className="text-slate-800">
-                Home
+            <div className="hidden space-x-3 lg:space-x-7 md:flex text-sm lg:text-base font-semibold items-center list-none">
+              <NavLink to="/">
+                <li className="text-slate-800 hover:underline">Home</li>
               </NavLink>
               <NavLink to="/about" className="text-slate-800">
-                About
+                <li className="text-slate-800 hover:underline">About</li>
               </NavLink>
-              <NavLink to="/events" className="text-slate-800">
-                Events
+              <NavLink to="/events">
+                <li className="text-slate-800 hover:underline">Events</li>
               </NavLink>
-              <NavLink to="/admin" className="text-slate-800">
-                Admin
+              <NavLink to="/admin">
+                <li className="text-slate-800 hover:underline">Admin</li>
               </NavLink>
-              <NavLink to="/mens" className="text-slate-800">
-                Health
+              <NavLink to="/mens">
+                <li className="text-slate-800 hover:underline">Health</li>
               </NavLink>
-              <NavLink to="/gallery" className="text-slate-800">
-                Gallery
+              <NavLink to="/gallery">
+                <li className="text-slate-800 hover:underline">Gallery</li>
               </NavLink>
-              <NavLink to="/volunteering" className="text-slate-800">
-                Volunteering
+              <NavLink to="/volunteering">
+                <li className="text-slate-800 hover:underline">Volunteering</li>
               </NavLink>
-              <NavLink to="/signin" className="text-slate-800">
-                Signin
+              <NavLink to="/profile">
+                {currentUser ? (
+                  <img src={User} alt="profileImage" className="rounded-full h-7 w-7 object-cover"/>
+                ): (
+                  <li className="text-slate-800 hover:underline">Signin</li>
+                )}
               </NavLink>
-              <NavLink to="/donate" className="text-slate-800">
+              <NavLink to="/donate">
                 <button className="bg-DonateGreen rounded-full px-4 py-2 text-lg">
                   Donate
                 </button>
