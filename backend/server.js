@@ -12,7 +12,10 @@ const app = express();
 const port = process.env.PORT || 5000;
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: 'http://localhost:3000', // Your frontend URL
+  credentials: true, // This allows cookies to be sent
+}));
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(express.json());

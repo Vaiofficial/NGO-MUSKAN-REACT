@@ -1,23 +1,17 @@
 const User = require("../models/user.model");
-const Jwt = require("jsonwebtoken");
 const bcryptjs = require("bcryptjs");
-
-// Custom error handler
-const errorHandler = (status, message) => {
-  const error = new Error(message);
-  error.status = status;
-  return error;
-};
+const Jwt = require("jsonwebtoken");
+const { errorHandler } = require("../utils/error");
 
 // signup function
 module.exports.signup = async (req, res, next) => {
-  const { username, email, password } = req.body;
+  const { username, email, password, role } = req.body;
   const hashedPassword = bcryptjs.hashSync(password, 10);
-  const newUser = new User({ username, email, password: hashedPassword });
+  const newUser = new User({ username, email, password: hashedPassword, role });
 
   try {
     await newUser.save();
-    res.setHeader("Content-Type", "application/json");
+    // res.setHeader("Content-Type", "application/json");
     res.status(201).json({ message: "User created successfully" });
   } catch (error) {
     next(error);
@@ -34,12 +28,15 @@ module.exports.signin = async (req, res, next) => {
     const validPassword = bcryptjs.compareSync(password, validUser.password);
     if (!validPassword) return next(errorHandler(401, "Wrong Credentials"));
 
+    // token create kar rhe hai - yha mistake hoti hai
     const token = Jwt.sign({ id: validUser._id }, process.env.JWT_SECRET);
-    const { password: pass, ...rest } = validUser._doc;
+    console.log("token -", token)
+    const { password: pass, ...userData } = validUser._doc;
 
-    res.cookie("access_token", token, { httpOnly: true })
+      // browser mai set kar rhe hai cookie ko jiska header hai access_token
+    res.cookie("access_token",token, { httpOnly: true})
       .status(200)
-      .json({success: true, token});
+      .json({success:true , ...userData ,token });
   } catch (error) {
     next(error);
   }
@@ -56,10 +53,7 @@ module.exports.google = async (req, res, next) => {
       //sending rest except password for security purpose.
       const { password, ...rest } = user._doc;
       //creating cookie
-      res
-        .cookie("access_token", token, { httpOnly: true })
-        .status(200)
-        .json(rest);
+      res.cookie("access_token", token, { httpOnly: true }).status(200).jso(rest);
     }
     //otherwise we create a user
     else {
@@ -82,3 +76,15 @@ module.exports.google = async (req, res, next) => {
     next(error);
   }
 };
+
+
+// SIGNOUT FUNCTION
+
+module.exports.signOut = async (req, res, next) => {
+  try {
+    res.clearCookie('access_token');
+    res.status(200).json('User has been logged out')
+  } catch (error) {
+    next(error);
+  }
+}

@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { Link,useNavigate  } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import OAuth from "../components/OAuth";
-const {
+// import OAuth from "../components/OAuth";
+import {
   signInStart,
   signInFailure,
   signInSuccess,
-} = require("../redux/user/userSlice");
+} from "../redux/user/userSlice";
 
 export default function SignIn() {
   const [formData, setFormData] = useState({});
@@ -34,6 +34,7 @@ export default function SignIn() {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          credentials: "include",
         },
         body: JSON.stringify(formData),
       });
@@ -44,9 +45,10 @@ export default function SignIn() {
         dispatch(signInFailure(data.message));
         return;
       }
+      dispatch(signInSuccess(data));
+      console.log(data)
       // setLoading(false);
       // setError(null)
-      dispatch(signInSuccess(data));
       //successfully signup hua to login page par redirect kar dere hai.
       navigate("/");
     } catch (error) {
@@ -81,7 +83,7 @@ export default function SignIn() {
           disabled={loading}
           className="bg-slate-700 text-white uppercase rounded-lg p-3 font-semibold hover:opacity-95 disabled:opacity-80"
         >
-          {loading ? "Loading..." : "Sign Up"}
+          {loading ? "Loading..." : "Sign in"}
         </button>
         {/* google login */}
         {/* <OAuth>

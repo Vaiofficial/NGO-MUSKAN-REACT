@@ -1,7 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import User from "../images/User2.png";
-import { Link } from "react-router-dom";
 import {
   getDownloadURL,
   getStorage,
@@ -12,12 +10,12 @@ import {
   updateUserStart,
   updateUserSuccess,
   updateUserFailure,
-  deleteUserFailure,
   deleteUserStart,
   deleteUserSuccess,
+  deleteUserFailure,
   signOutUserStart,
-  signOutUserFailure,
   signOutUserSuccess,
+  signOutUserFailure,
 } from "../redux/user/userSlice";
 import { app } from "../firebase";
 
@@ -25,37 +23,26 @@ export default function Profile() {
   const fileRef = useRef(null);
   const { currentUser, loading, error } = useSelector((state) => state.user);
   const [file, setFile] = useState(undefined);
-  // console.log(file)
   const [filePerc, setFilePerc] = useState(0);
   const [fileUploadError, setFileUploadError] = useState(false);
   const [FormData, setFormData] = useState({});
-  // console.log(fromData);
-  console.log(filePerc);
-  console.log(fileUploadError)
   const [updateSuccess, setUpdateSuccess] = useState(false);
   const dispatch = useDispatch();
-  const [showListingsError, setShowListingsError] = useState(false);
-  const [userListings, setUserListings] = useState([]);
 
   console.log(FormData);
 
-  // FUNCTION FOR UPLOAD FILE
-
-  //so jab bhi file mai changes hoongi handlefileupload ccfunction trigger hoga.
   useEffect(() => {
     if (file) {
       handleFileUpload(file);
     }
   }, [file]);
 
-  //it is trigger when file is selected , uses firebase storage to upload the file
   const handleFileUpload = (file) => {
     const storage = getStorage(app);
     const fileName = new Date().getTime() + file.name;
     const storageRef = ref(storage, fileName);
     const uploadTask = uploadBytesResumable(storageRef, file);
 
-    //this one will track the changes and give us the snapshot
     uploadTask.on(
       "state_changed",
       (snapshot) => {
@@ -67,7 +54,6 @@ export default function Profile() {
         setFileUploadError(true);
       },
       () => {
-        //upload successful hua to download url of uploaded file is retrieved using formData state variable.
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) =>
           setFormData({ ...FormData, avatar: downloadURL })
         );
@@ -79,70 +65,98 @@ export default function Profile() {
     setFormData({ ...FormData, [e.target.id]: e.target.value });
   };
 
+  // UPDATE USER DETAILS FUNCTION
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       dispatch(updateUserStart());
-      const res = await fetch(`/api/user/update/${currentUser._id}`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(FormData),
-      });
-      const data = await res.json();
-      if (data.success === false) {
-        dispatch(updateUserFailure(data.message));
+      const res = await fetch(
+        `http://localhost:5000/api/user/update/${currentUser._id}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(FormData),
+          credentials: "include",
+        }
+      );
+
+      if (!res.ok) {
+        const errorData = await res.json();
+        dispatch(updateUserFailure(errorData.message || "Update failed"));
         return;
       }
-      dispatch(updateUserFailure(data.message));
+
+      const data = await res.json();
+      dispatch(updateUserSuccess(data));
       setUpdateSuccess(true);
     } catch (error) {
       dispatch(updateUserFailure(error.message));
     }
   };
 
-  // HANDLE DELETE FUNCTION
+  // USER SIGNOUT FUNCTION
 
-  const handleDelete = async () => {
+  const handleSignout = async () => {
     try {
-      dispatch(deleteUserStart());
-      const res = await fetch(`/api/user/delete/${currentUser._id}`, {
-        method: "DELETE",
+      dispatch(signOutUserStart());
+      const res = await fetch("http://localhost:5000/api/auth/signout", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
       });
-      const data = await res.json();
-      if (data.success == false) {
-        dispatch(deleteUserFailure(data.message));
+
+      if (!res.ok) {
+        const errorData = await res.json();
+        dispatch(signOutUserFailure(errorData.message || "Signout failed"));
         return;
       }
+
+      const data = await res.json();
+      dispatch(signOutUserSuccess(data));
+    } catch (error) {
+      dispatch(signOutUserFailure(error.message));
+    }
+  };
+
+  // Delete User Function
+
+  const handleDeleteUser = async () => {
+    try {
+      dispatch(deleteUserStart());
+      const res = await fetch(
+        `http://localhost:5000/api/user/delete/${currentUser._id}`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          credentials: "include",
+        }
+      );
+
+      if (!res.ok) {
+        const errorData = await res.json();
+        dispatch(deleteUserFailure(errorData.message || "Delete failed"));
+        return;
+      }
+
+      const data = await res.json();
       dispatch(deleteUserSuccess(data));
     } catch (error) {
       dispatch(deleteUserFailure(error.message));
     }
   };
 
-  // HANDLE SIGNOUT FUNCTION
-  const handleSignout = async () => {
-    try {
-      dispatch(signOutUserStart());
-      const res = await fetch("/api/auth/signout");
-      const data = await res.json();
-      if (data.success === false) {
-        dispatch(signOutUserFailure(data.message));
-        return;
-      }
-      dispatch(signOutUserSuccess(data));
-    } catch (error) {
-      dispatch(signOutUserFailure(data.message));
-    }
-  };
-
-
   return (
     <div className="max-w-lg m-auto p-3">
       <h1 className="text-3xl font-bold text-center my-7 ">Profile</h1>
 
-      <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+      <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
         <input
           onChange={(e) => setFile(e.target.files[0])}
           hidden={true}
@@ -152,8 +166,7 @@ export default function Profile() {
         ></input>
         <img
           onClick={() => fileRef.current.click()}
-          //agar formdata true hai to vo image show kro else currentUser vala hi.
-          src={FormData.avatar || User }
+          src={FormData.avatar || currentUser.avatar}
           alt="profile "
           className="rounded-full h-24 w-24 object-cover self-center mt-2 cursor-pointer"
         ></img>
@@ -164,7 +177,7 @@ export default function Profile() {
             </span>
           ) : filePerc > 0 && filePerc < 100 ? (
             <span className="text-slate-700">{`Uploading ${filePerc}%`}</span>
-          ) : filePerc == 100 ? (
+          ) : filePerc === 100 ? (
             <span className="text-green-600 font-medium">
               Image Successfully Uploaded!
             </span>
@@ -202,31 +215,22 @@ export default function Profile() {
         >
           {loading ? "Loading..." : "Update"}
         </button>
-
-        <Link
-          to={"/create-listing"}
-          className="bg-green-600 text-white p-3 rounded-lg uppercase hover:opacity-95 text-center"
-        >
-          create listing
-        </Link>
       </form>
 
       <div className="flex justify-between mt-5">
         <span
-          onClick={handleDelete}
           className="text-red-700 cursor-pointer font-medium"
+          onClick={handleDeleteUser}
         >
           Delete Account
         </span>
         <span
-          onClick={handleSignout}
           className="text-red-700 cursor-pointer font-medium"
+          onClick={handleSignout}
         >
           Sign out
         </span>
       </div>
-
-      {/* error / update etc notification message */}
 
       <p className="text-red-700 mt-5 text-center font-medium">
         {" "}
@@ -235,60 +239,6 @@ export default function Profile() {
       <p className="text-green-600 mt-5 text-center font-medium">
         {updateSuccess ? "User is updated successfully" : ""}
       </p>
-
-      {/* Show Listing Button */}
-      {/* <button
-        // onClick={handleShowListings}
-        className="text-green-600 font-semibold w-full"
-      >
-        Show my listings
-      </button> */}
-      {/* <p className="text-red-600">
-        {showListingsError ? "Error showing Listings" : " "}
-      </p> */}
-
-      {userListings && userListings.length > 0 && (
-        <div className="flex flex-col gap-4">
-          <h1 className="text-center text-3xl mt-7 font-semibold">
-            Your Listings
-          </h1>
-          {userListings.map((listing) => (
-            <div
-              key={listing._id}
-              className="flex justify-between items-center border border-slate-200 rounded-lg p-3 gap-4 "
-            >
-              <Link to={`/listing/${listing._id}`}>
-                <img
-                  src={listing.imageUrls[0]}
-                  alt="listing image"
-                  className="h-16 w-16 object-contain"
-                />
-              </Link>
-
-              <Link
-                to={`/listing/${listing._id}`}
-                className="text-slate-700 font-semibold flex-1 hover:underline truncate"
-              >
-                <p>{listing.name}</p>
-              </Link>
-
-              <div className="flex flex-col ">
-                <button
-                  onClick={() => handleListDelete(listing._id)}
-                  className="text-red-700 uppercase font-semibold "
-                >
-                  Delete
-                </button>
-                <Link to={`/update-listing/${listing._id}`}>
-                  <button className="text-green-700 uppercase font-semibold ">
-                    Edit
-                  </button>
-                </Link>
-              </div>
-            </div>
-          ))}
-        </div>
-      )}
     </div>
   );
 }
