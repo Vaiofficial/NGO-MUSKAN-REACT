@@ -183,16 +183,14 @@ const Gallery = () => {
 
   return (
     <PageLayout>
-      <div className="mb-10 mt-10">
-        <div>
-          <div className="text-center pb-10">
-            <h1 className="font-bold text-black text-2xl sm:text-5xl">
-              OUR WORK GALLERY
-            </h1>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-            {listItems}
-          </div>
+      <div className="mt-14">
+        <div className="flex justify-center"> {/* Added flex justify-center class here */}
+          <h1 className="font-extrabold text-2xl sm:text-5xl font-montserrat text-subHeadingBlue nav-link">
+            OUR WORK GALLERY
+          </h1>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mt-14">
+          {listItems}
         </div>
       </div>
     </PageLayout>
@@ -200,3 +198,4 @@ const Gallery = () => {
 };
 
 export default Gallery;
+

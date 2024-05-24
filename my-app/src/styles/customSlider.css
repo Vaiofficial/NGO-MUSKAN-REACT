@@ -1,0 +1,43 @@
+/* customSlider.css */
+
+/* Example CSS to move slider buttons */
+.slick-prev {
+    left: 10px; /* Adjust the left position */
+  }
+  
+  .slick-next {
+    right: 10px; /* Adjust the right position */
+  }
+  
+.slick-prev,
+.slick-next {
+  width: 40px;
+  height: 40px;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  border-radius: 50%;
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+}
+
+.slick-prev:before,
+.slick-next:before {
+  font-size: 20px;
+  color: white; /* White color for the arrows */
+  opacity: 1;
+}
+
+.slick-prev:hover,
+.slick-next:hover {
+  background-color: rgba(0, 0, 0, 0.8); /* Darker on hover */
+}
+
+.slick-dots li button:before {
+  font-size: 12px;
+  color: black; /* Color of dots */
+}
+
+.slick-dots li.slick-active button:before {
+  color: black; /* Color of active dot */
+}

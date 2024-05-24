@@ -1,15 +1,17 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+// import { useNavigate  } from "react-router-dom";
 // import OAuth from "../components/OAuth";
 
 export default function SignUp() {
   const [formData, setFormData] = useState({});
   const [error, setError] = useState(null);
+  const [msg, setMsg] = useState("");
   const [loading, setLoading] = useState(false);
   const [role, setRole] = useState("");
   const [showSecretKey, setShowSecretKey] = useState("");
   const [secretKey, setSecretKey] = useState("");
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({
@@ -45,6 +47,7 @@ export default function SignUp() {
         body: JSON.stringify({ ...formData, role }),
       });
       const data = await res.json();
+      setMsg(res.message);
       setLoading(false);
 
       if (!res.ok) {
@@ -53,7 +56,8 @@ export default function SignUp() {
       } else {
         // If signup successful, clear error and navigate to signin page
         setError(null);
-        navigate("/signin");
+        setMsg("Email Sent Successfully!");
+        // navigate("/signin");
       }
     } catch (error) {
       // Catch any network errors
@@ -64,44 +68,52 @@ export default function SignUp() {
 
   return (
     <div className="p-3 max-w-lg mx-auto">
-      <h1 className="font-semibold text-center my-7 text-3xl">Sign Up</h1>
+      <h1 className="font-semibold text-center my-7 text-3xl font-montserrat">
+        Sign Up
+      </h1>
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <div className="flex items-center gap-2">
           <input
             type="radio"
             id="user"
             value="user"
+            className="font-roboto"
             checked={role === "user"}
             onChange={handleRoleChange}
           />
-          <label htmlFor="user">User</label>
+          <label className="font-roboto" htmlFor="user">
+            User
+          </label>
           <input
             type="radio"
             id="admin"
             value="admin"
+            className="font-roboto"
             checked={role === "admin"}
             onChange={handleRoleChange}
           />
-          <label htmlFor="admin">Admin</label>
+          <label className="font-roboto" htmlFor="admin">
+            Admin
+          </label>
         </div>
         <input
           type="text"
           placeholder="username"
-          className="border rounded-lg p-3 focus:outline-none"
+          className="border rounded-lg p-3 focus:outline-none font-roboto"
           id="username"
           onChange={handleChange}
         />
         <input
           type="text"
           placeholder="email"
-          className="border rounded-lg p-3 focus:outline-none"
+          className="border rounded-lg p-3 focus:outline-none font-roboto"
           id="email"
           onChange={handleChange}
         />
         <input
           type="password"
           placeholder="password"
-          className="border rounded-lg p-3 focus:outline-none"
+          className="border rounded-lg p-3 focus:outline-none font-roboto"
           id="password"
           onChange={handleChange}
         />
@@ -110,14 +122,14 @@ export default function SignUp() {
           <input
             type="password"
             placeholder="secret key"
-            className="border rounded-lg p-3 focus:outline-none"
+            className="border rounded-lg p-3 focus:outline-none font-roboto"
             id="secretKey"
             onChange={(e) => setSecretKey(e.target.value)}
           />
         )}
         <button
           disabled={loading}
-          className="bg-slate-700 text-white uppercase rounded-lg p-3 font-semibold hover:opacity-95 disabled:opacity-80"
+          className="bg-slate-700 text-white uppercase rounded-lg p-3 font-semibold hover:opacity-95 disabled:opacity-80 font-roboto"
         >
           {loading ? "Loading..." : "Sign Up"}
         </button>
@@ -127,12 +139,17 @@ export default function SignUp() {
         </OAuth> */}
       </form>
       <div className="flex gap-2 mt-5">
-        <p>Have an account ?</p>
+        <p className="font-roboto">Have an account ?</p>
         <Link to={"/signin"}>
-          <span className="text-red-600">Sign in</span>
+          <span className="text-red-600 font-roboto">Sign in</span>
         </Link>
       </div>
-      {error && <p className="text-red-600 mt-5">{error}</p>}
+      {error && <p className="text-blue mt-5 font-roboto">{error}</p>}
+      {msg && (
+        <p className="text-green-700 mt-5 font-roboto">
+          Email Sent Successfully
+        </p>
+      )}
     </div>
   );
 }

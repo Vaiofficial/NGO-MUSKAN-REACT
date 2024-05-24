@@ -14,6 +14,7 @@ import PlantCare from "../images/PlantCare.jpg";
 import Education from "../images/education.jpg";
 import StruggleWoman from "../images/StruggleWoman.jpg";
 import { NavLink } from "react-router-dom";
+import "../styles/customSlider.css";
 
 // campaign data for sliding
 const data = [
@@ -21,31 +22,32 @@ const data = [
     name: `Menstrual Health Workshops`,
     img: FoodDonation,
     description: `Muskan NGO organizes interactive workshops to educate women and girls about menstrual health, hygiene, and reproductive anatomy. These workshops provide crucial information on menstrual cycle management, proper hygiene practices, and debunking myths and taboos surrounding menstruation.`,
-    id:1
+    id: 1,
   },
   {
     name: `Sanitary Pad Distribution`,
     img: OldAgeCare,
-    description: `Muskan NGO distributes free sanitary pads to women and girls in underprivileged communities who lack access to menstrual hygiene products. By providing these essential items, we ensure that individuals can manage their periods safely and with dignity, enabling them to attend school or work without interruption.`,
-    id:2
+    description: `Muskan NGO provides free sanitary pads to women and girls in underprivileged communities, ensuring they can manage their periods safely and with dignity, and continue attending school or work without interruption.`,
+    id: 2,
   },
   {
     name: `Community Awareness Campaigns`,
     img: PlantCare,
-    description: `Muskan NGO conducts community-wide awareness campaigns to challenge societal stigmas and misconceptions related to menstruation. Through street plays, poster exhibitions, and informational sessions, we aim to normalize conversations about periods and promote menstrual health as a natural aspect of women's lives.`,
-    id:3
+    description: `Muskan NGO raises awareness about menstruation, challenging stigmas through street plays, posters, and info sessions. We normalize discussions and advocate for menstrual health as integral to women's lives.`,
+    id: 3,
   },
   {
     name: `School Hygiene Programs`,
     img: AnimalCare,
-    description: `Muskan NGO implements hygiene programs in schools, educating both students and teachers about menstrual health and hygiene management. We advocate for the establishment of clean and private toilet facilities equipped with sanitary disposal systems, creating a supportive environment for menstruating students.`,
-    id:4
+    description: `
+    Muskan NGO educates schools on menstrual health, providing hygiene programs and advocating for clean, private toilets with proper disposal systems to support menstruating students.`,
+    id: 4,
   },
   {
     name: `Advocacy and Policy Engagement`,
     img: Education,
-    description: `Muskan NGO actively engages with policymakers and government authorities to advocate for policies that prioritize menstrual health and hygiene. We lobby for the integration of menstrual hygiene management into school curricula, the allocation of budgets for sanitary pad provision in public facilities, and the implementation of supportive workplace policies for menstruating employees. Through advocacy efforts, we aim to create lasting systemic change and ensure menstrual equity for all.`,
-    id:5
+    description: `Muskan NGO partners with policymakers to advocate for menstrual health policies. We push for menstrual hygiene education in schools, funding for sanitary pads in public spaces, and supportive workplace policies. Our aim: systemic change for menstrual equity.`,
+    id: 5,
   },
 ];
 
@@ -56,7 +58,7 @@ const Mens = () => {
     infinite: true,
     slidesToShow: 3,
     slidesToScroll: 1,
-    autoplay: false,
+    autoplay: true,
     speed: 1800,
     autoplaySpeed: 2000,
     cssEase: "linear",
@@ -87,6 +89,7 @@ const Mens = () => {
       },
     ],
   };
+
   return (
     <PageLayout>
       <div className="mb-10 mt-10">
@@ -94,12 +97,12 @@ const Mens = () => {
 
         <div className="flex flex-col lg:flex-row items-center justify-center">
           {/* Text section Starts Here*/}
-          <div className="lg:w-1/2 lg:mr-10 mb-10 lg:mb-0">
-            <h1 className="text-4xl lg:text-6xl font-bold text-pink-500 mb-5 lg:mb-10 text-center lg:text-left">
-              MENSTRUAL HEALTH
+          <div className="lg:w-1/2 lg:mr-10 mb-10 lg:mb-0 px-10 sm:px-10">
+            <h1 className="text-4xl lg:text-6xl font-bold mb-5 lg:mb-10 lg:text-left font-montserrat text-headingPink">
+              Menstrual Health
             </h1>
-            <div className="">
-              <p className="text-lg lg:text-xl mb-5">
+            <div>
+              <p className="text-lg lg:text-xl pt-5 md:p-0 font-roboto">
                 We extend a warm welcome to you, as we embark upon a purposeful
                 voyage within the realm of menstrual health. In this realm, we
                 confront the pressing matters of inadequate access to essential
@@ -109,7 +112,7 @@ const Mens = () => {
                 ignorance, as we passionately advocate for the noble cause of
                 menstrual justice.
               </p>
-              <p className="text-lg lg:text-xl">
+              <p className="text-lg lg:text-xl pt-5 md:p-0 font-roboto">
                 Together, let us soar towards a brighter horizon, where women's
                 health, dignity, and rights flourish with unabated strength.
                 Join us, dear friend, in this magnificent odyssey of
@@ -133,8 +136,8 @@ const Mens = () => {
         {/* Issue faced Section Starts Here */}
         <div className="bg-PeopleColor rounded-md mt-10 lg:mt-20">
           <div className="px-8 py-6 lg:py-10">
-            <h2 className="text-5xl font-bold mb-5 text-center">
-              Issue's Faced
+            <h2 className="text-5xl font-bold mb-5 text-center font-roboto uppercase text-slate-900 uppercase">
+              Issue's faced
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-10 py-5">
               <Issue
@@ -163,21 +166,18 @@ const Mens = () => {
         {/* Issue faced Section Ends Here */}
 
         {/* MUSKAN DOING SECTION STARTS HERE */}
-        <div>
-          <div className="mt-10 sm:mt-24">
-            <div>
-              <h2 className="text-5xl font-bold mb-14 text-center">
-                What NGO Muskan is Doing
-              </h2>
-            </div>
+        <div className="bg-PeopleColor rounded-md mt-10 sm:mt-24">
+          <div className="px-8 py-6 lg:py-10">
+            <h2 className="text-5xl font-bold mb-14 text-center text-slate-900 font-montserrat uppercase">
+              What NGO Muskan is Doing
+            </h2>
             <Slider {...settings}>
-              {data.map((d) => (
+              {data.map((item) => (
                 <MuskanDoing
-                  key={d.id}
-                  name={d.name}
-                  image={d.img}
-                  description={d.description}
-                  profile="https://www.linkedin.com/in/sadhan-singla/"
+                  key={item.id}
+                  name={item.name}
+                  image={item.img}
+                  description={item.description}
                 />
               ))}
             </Slider>
@@ -189,22 +189,24 @@ const Mens = () => {
 
         <div className="flex flex-col lg:flex-row items-center justify-center mt-5">
           {/* Text section Starts Here*/}
-          <div className="lg:w-1/2 lg:mr-10 mb-10 lg:mb-0">
-            <h1 className="text-4xl lg:text-6xl font-bold text-pink-500 mb-5 lg:mb-10 text-center lg:text-left">
+          <div className="lg:w-1/2 lg:mr-10 mb-10 lg:mb-0 mt-10 sm:mt-0 px-10 sm:px-0">
+            <h1 className="text-4xl lg:text-6xl font-bold mb-5 lg:mb-10 lg:text-left text-headingPink font-montserrat">
               SHARE YOUR STRUGGLES WITH US
             </h1>
             <div className="">
-              <p className="text-lg lg:text-xl mb-5">
+              <p className="text-lg lg:text-xl sm:text-left mb-5 font-roboto">
                 Voice your opinions and share your experiences and get a chance
                 to be featured in our website or be approached by our
                 organization.
               </p>
             </div>
-            <NavLink to="/">
-              <button className="bg-DonateGreen rounded-full px-6 py-1 sm:px-7 sm:py-4 text-base sm:text-xl text-black font-semibold">
-                Share Now
-              </button>
-            </NavLink>
+            <div className="px-3 flex justify-center sm:flex-none">
+              <NavLink to="/">
+                <button className="inline-block text-white font-bold py-3 px-5 rounded-full bg-gradient-to-r from-gradientStart to-gradientEnd border border-transparent transform hover:scale-110 hover:border-white transition-transform duration-3000 ease-in-out">
+                  Share Now
+                </button>
+              </NavLink>
+            </div>
           </div>
           {/* Text section Ends Here*/}
 
@@ -225,12 +227,12 @@ const Issue = ({ name, image, description }) => {
   return (
     <div className="rounded-md bg-white overflow-hidden group relative transition duration-300 ease-in-out transform hover:scale-105">
       <div
-        className="w-full h-96 bg-cover bg-top rounded-md relative"
+        className="w-full h-96 bg-cover bg-center rounded-md relative"
         style={{ backgroundImage: `url(${image})` }}
       >
         <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white p-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-          <h3 className="text-lg font-semibold">{name}</h3>
-          <p className="text-sm">{description}</p>
+          <h3 className="text-lg font-semibold font-montserrat">{name}</h3>
+          <p className="text-sm font-roboto">{description}</p>
         </div>
       </div>
     </div>
@@ -238,17 +240,15 @@ const Issue = ({ name, image, description }) => {
 };
 
 // WHAT MUSKAN DOING SECTION FUNCTION
-const MuskanDoing = ({ name, image, description , id}) => {
+const MuskanDoing = ({ name, image, description }) => {
   return (
-    <div key={id} className="rounded-md bg-white overflow-hidden group relative transition duration-300 ease-in-out transform hover:scale-105">
-      <div
-        className="h-96 bg-cover bg-top rounded-md relative w-full"
-        style={{ backgroundImage: `url(${image})` }}
-      >
-        <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white px-4 py-2 opacity-0 transition-opacity duration-300 group-hover:opacity-100 rounded-md">
-          <h3 className="text-lg font-semibold">{name}</h3>
-          <p className="text-sm">{description}</p>
-        </div>
+    <div
+      className="h-96 bg-cover bg-center rounded-md relative bg-white overflow-hidden group transition duration-300 ease-in-out transform hover:scale-105 w-auto"
+      style={{ backgroundImage: `url(${image})` }}
+    >
+      <div className=" absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white p-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+        <h3 className="text-lg font-semibold font-montserrat">{name}</h3>
+        <p className="text-sm font-roboto">{description}</p>
       </div>
     </div>
   );

@@ -5,8 +5,10 @@ import PageLayout from "../components/PageLayout";
 const Admin = () => {
   return (
     <PageLayout>
-      <div className="admin-page p-6">
-        <h1 className="text-3xl font-bold mb-6 text-center">Admin Dashboard</h1>
+      <div className="admin-page py-20">
+        <div className="flex justify-center"> {/* Added flex justify-center class here */}
+          <h1 className="text-4xl font-extrabold mb-6 text-center font-montserrat text-subHeadingBlue nav-link uppercase">Admin Dashboard</h1>
+        </div>
         <AdminEvents />
       </div>
     </PageLayout>

@@ -96,13 +96,13 @@ export default function App() {
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
                 fill="currentColor"
-                className="mr-3 h-4 w-4"
+                className="mr-3 h-4 w-4 font-montserrat"
               >
                 <path d="M12.378 1.602a.75.75 0 00-.756 0L3 6.632l9 5.25 9-5.25-8.622-5.03zM21.75 7.93l-9 5.25v9l8.628-5.032a.75.75 0 00.372-.648V7.93zM11.25 22.18v-9l-9-5.25v8.57a.75.75 0 00.372.648l8.628 5.033z" />
               </svg>
               About NGO Muskan
             </h6>
-            <p>
+            <p className="font-roboto">
               NGO Muskan is a youth led N.G.O. which visions at eradicating the
               taboos and normalising menstruation by the methods of spreading
               general awareness and encouraging hygiene for the same. Our NGO
@@ -112,31 +112,31 @@ export default function App() {
           </div>
           {/* <!-- Products section --> */}
           <div className="text-center">
-            <h6 className="mb-4 flex justify-center font-semibold uppercase ">
+            <h6 className="mb-4 flex justify-center font-semibold uppercase  font-montserrat">
               Our Works
             </h6>
             <p className="mb-4">
-              <button className="text-neutral-600 dark:text-neutral-200">
+              <button className="text-neutral-600 dark:text-neutral-200 font-roboto">
                 Education Support
               </button>
             </p>
             <p className="mb-4">
-              <button className="text-neutral-600 dark:text-neutral-200">
+              <button className="text-neutral-600 dark:text-neutral-200 font-roboto">
                 Food Donation
               </button>
             </p>
             <p className="mb-4">
-              <button className="text-neutral-600 dark:text-neutral-200">
+              <button className="text-neutral-600 dark:text-neutral-200 font-roboto">
                 Old Age Care
               </button>
             </p>
             <p className="mb-4">
-              <button className="text-neutral-600 dark:text-neutral-200">
+              <button className="text-neutral-600 dark:text-neutral-200 font-roboto">
                 Animals Care
               </button>
             </p>
             <p>
-              <button className="text-neutral-600 dark:text-neutral-200">
+              <button className="text-neutral-600 dark:text-neutral-200 font-roboto">
                 Plants Care
               </button>
             </p>
@@ -144,7 +144,7 @@ export default function App() {
 
           {/* <!-- Contact section --> */}
           <div>
-            <h6 className="mb-4 flex justify-center font-semibold uppercase md:justify-start">
+            <h6 className="mb-4 flex justify-center font-semibold uppercase md:justify-start font-montserrat">
               Contact
             </h6>
             <p className="mb-4 flex items-center justify-center md:justify-start">
@@ -152,14 +152,14 @@ export default function App() {
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
                 fill="currentColor"
-                className="mr-3 h-5 w-5"
+                className="mr-3 h-5 w-5 font-roboto"
               >
                 <path d="M11.47 3.84a.75.75 0 011.06 0l8.69 8.69a.75.75 0 101.06-1.06l-8.689-8.69a2.25 2.25 0 00-3.182 0l-8.69 8.69a.75.75 0 001.061 1.06l8.69-8.69z" />
                 <path d="M12 5.432l8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 01-.75-.75v-4.5a.75.75 0 00-.75-.75h-3a.75.75 0 00-.75.75V21a.75.75 0 01-.75.75H5.625a1.875 1.875 0 01-1.875-1.875v-6.198a2.29 2.29 0 00.091-.086L12 5.43z" />
               </svg>
               New Delhi, NY 10012, India
             </p>
-            <p className="mb-4 flex items-center justify-center md:justify-start">
+            <p className="mb-4 flex items-center justify-center md:justify-start font-roboto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
@@ -171,7 +171,7 @@ export default function App() {
               </svg>
               info@example.com
             </p>
-            <p className="mb-4 flex items-center justify-center md:justify-start">
+            <p className="mb-4 flex items-center justify-center md:justify-start font-roboto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
@@ -186,7 +186,7 @@ export default function App() {
               </svg>
               + 01 234 567 88
             </p>
-            <p className="flex items-center justify-center md:justify-start">
+            <p className="flex items-center justify-center md:justify-start font-roboto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
@@ -206,10 +206,10 @@ export default function App() {
       </div>
 
       {/* <!--Copyright section--> */}
-      <div className="bg-neutral-200 p-6 text-center dark:bg-neutral-700">
+      <div className="bg-neutral-200 p-6 text-center dark:bg-neutral-700 font-roboto">
         <span>© 2024 Copyright: </span>
         <a
-          className="font-semibold text-neutral-600 dark:text-neutral-400"
+          className="font-semibold text-neutral-600 dark:text-neutral-400 font-roboto"
           href="/"
         >
           NGO Muskan

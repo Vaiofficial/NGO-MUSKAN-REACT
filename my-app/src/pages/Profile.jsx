@@ -1,11 +1,12 @@
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
+// import { useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  getDownloadURL,
-  getStorage,
-  ref,
-  uploadBytesResumable,
-} from "firebase/storage";
+// import {
+//   getDownloadURL,
+//   getStorage,
+//   ref,
+//   uploadBytesResumable,
+// } from "firebase/storage";
 import {
   updateUserStart,
   updateUserSuccess,
@@ -17,49 +18,51 @@ import {
   signOutUserSuccess,
   signOutUserFailure,
 } from "../redux/user/userSlice";
-import { app } from "../firebase";
+// import { app } from "../firebase";
 
 export default function Profile() {
-  const fileRef = useRef(null);
+  // const fileRef = useRef(null);
   const { currentUser, loading, error } = useSelector((state) => state.user);
-  const [file, setFile] = useState(undefined);
-  const [filePerc, setFilePerc] = useState(0);
-  const [fileUploadError, setFileUploadError] = useState(false);
+  // const [file, setFile] = useState(undefined);
+  // const [filePerc, setFilePerc] = useState(0);
+  // const [fileUploadError, setFileUploadError] = useState(false);
   const [FormData, setFormData] = useState({});
   const [updateSuccess, setUpdateSuccess] = useState(false);
   const dispatch = useDispatch();
 
   console.log(FormData);
 
-  useEffect(() => {
-    if (file) {
-      handleFileUpload(file);
-    }
-  }, [file]);
+  // useEffect(() => {
+  //   if (file) {
+  //     handleFileUpload(file);
+  //   }
+  // }, [file]);
 
-  const handleFileUpload = (file) => {
-    const storage = getStorage(app);
-    const fileName = new Date().getTime() + file.name;
-    const storageRef = ref(storage, fileName);
-    const uploadTask = uploadBytesResumable(storageRef, file);
+  // // Upload Image Function
 
-    uploadTask.on(
-      "state_changed",
-      (snapshot) => {
-        const progress =
-          (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-        setFilePerc(Math.round(progress));
-      },
-      (error) => {
-        setFileUploadError(true);
-      },
-      () => {
-        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) =>
-          setFormData({ ...FormData, avatar: downloadURL })
-        );
-      }
-    );
-  };
+  // const handleFileUpload = (file) => {
+  //   const storage = getStorage(app);
+  //   const fileName = new Date().getTime() + file.name;
+  //   const storageRef = ref(storage, fileName);
+  //   const uploadTask = uploadBytesResumable(storageRef, file);
+
+  //   uploadTask.on(
+  //     "state_changed",
+  //     (snapshot) => {
+  //       const progress =
+  //         (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+  //       setFilePerc(Math.round(progress));
+  //     },
+  //     (error) => {
+  //       setFileUploadError(true);
+  //     },
+  //     () => {
+  //       getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) =>
+  //         setFormData({ ...FormData, avatar: downloadURL })
+  //       );
+  //     }
+  //   );
+  // };
 
   const handleChange = (e) => {
     setFormData({ ...FormData, [e.target.id]: e.target.value });
@@ -154,23 +157,25 @@ export default function Profile() {
 
   return (
     <div className="max-w-lg m-auto p-3">
-      <h1 className="text-3xl font-bold text-center my-7 ">Profile</h1>
+      <h1 className="text-3xl font-extrabold text-center my-7  font-montserrat uppercase text-slate-900">
+        Profile
+      </h1>
 
       <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
-        <input
-          onChange={(e) => setFile(e.target.files[0])}
-          hidden={true}
-          type="file"
-          ref={fileRef}
-          accept="image/*"
-        ></input>
+        {/* <input
+          // onChange={(e) => setFile(e.target.files[0])}
+          // hidden={true}
+          // type="file"
+          // ref={fileRef}
+          // accept="image/*"
+        ></input> */}
         <img
-          onClick={() => fileRef.current.click()}
+          // onClick={() => fileRef.current.click()}
           src={FormData.avatar || currentUser.avatar}
           alt="profile "
-          className="rounded-full h-24 w-24 object-cover self-center mt-2 cursor-pointer"
+          className="rounded-full h-24 w-24 object-cover self-center mt-2 cursor-none"
         ></img>
-        <p className="text-center">
+        {/* <p className="text-center">
           {fileUploadError ? (
             <span className="text-red-700">
               Error Image Upload (Image must be less than 2 mb)
@@ -184,7 +189,7 @@ export default function Profile() {
           ) : (
             ""
           )}
-        </p>
+        </p> */}
 
         <input
           type="text"
@@ -211,7 +216,7 @@ export default function Profile() {
         ></input>
         <button
           disabled={loading}
-          className="p-3 bg-slate-700 rounded-lg text-white uppercase hover:opacity-95 disabled:opacity-80"
+          className="p-3 bg-slate-700 rounded-lg text-white uppercase hover:opacity-95 disabled:opacity-80 font-roboto"
         >
           {loading ? "Loading..." : "Update"}
         </button>
@@ -219,13 +224,13 @@ export default function Profile() {
 
       <div className="flex justify-between mt-5">
         <span
-          className="text-red-700 cursor-pointer font-medium"
+          className="text-red-700 cursor-pointer font-medium font-roboto"
           onClick={handleDeleteUser}
         >
           Delete Account
         </span>
         <span
-          className="text-red-700 cursor-pointer font-medium"
+          className="text-red-700 cursor-pointer font-medium font-roboto"
           onClick={handleSignout}
         >
           Sign out
@@ -236,7 +241,7 @@ export default function Profile() {
         {" "}
         {error ? error : ""}
       </p>
-      <p className="text-green-600 mt-5 text-center font-medium">
+      <p className="text-green-600 mt-5 text-center font-medium font-roboto">
         {updateSuccess ? "User is updated successfully" : ""}
       </p>
     </div>

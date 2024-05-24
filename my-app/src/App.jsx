@@ -17,6 +17,7 @@ import Admin from "./pages/Admin";
 import Signup from "./pages/Signup";
 import Signin from "./pages/Signin";
 import PrivateRoute from "./components/PrivateRoute";
+import EmailVerify from "./components/EmailVerify";
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
         <Route path="/volunteering" element={<Volunteering />}></Route>
         <Route path="/signup" element={<Signup />}></Route>
         <Route path="/signin" element={<Signin />}></Route>
+        <Route path="/api/user/:id/verify/:token" element={<EmailVerify />} />
         <Route element={<PrivateRoute />}>
           <Route path="/profile" element={<Profile />}></Route>
         </Route>

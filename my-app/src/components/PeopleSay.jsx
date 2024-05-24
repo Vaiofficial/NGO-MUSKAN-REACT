@@ -68,9 +68,9 @@ const PeopleSay = () => {
   }, []);
 
   return (
-    <div className="mt-10 sm:mt-20">
-      <div className="items-center pt-5 pb-7 md:pb-10 ">
-        <h1 className="font-bold text-2xl sm:text-3xl md:text-4xl">
+    <div className="mt-0 sm:mt-10 md:mt-0 ">
+      <div className="px-3 pb-8 sm:pb-0  text-center sm:text-center md:pb-10 ">
+        <h1 className="font-bold text-3xl sm:text-4xl md:text-4xl text-headingPink sm:py-5 font-montserrat uppercase">
           What Are People Saying:-
         </h1>
       </div>
@@ -78,13 +78,13 @@ const PeopleSay = () => {
         {peopleSay.map((d, index) => (
           <div
             key={index}
-            className="bg-PeopleColor rounded-lg p-2 pt-8 pb-4"
+            className="bg-PeopleColor rounded-lg sm:p-2 pt-8 pb-4 md:pb-0"
             style={{ height: maxHeight }}
           >
-            <div className="overflow-hidden" ref={commentsRef}>
-              <p className="font-medium text-lg md:text-2xl ">{d.comment}</p>
+            <div className="overflow-hidden px-2 py-2" ref={commentsRef}>
+              <p className="font-medium text-lg md:text-2xl font-roboto">{d.comment}</p>
             </div>
-            <div className="text-xl pt-4">
+            <div className="text-xl pt-4 pb-2">
               <h3>~{d.author}</h3>
             </div>
           </div>

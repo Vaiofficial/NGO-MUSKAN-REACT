@@ -1,3 +1,27 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* In your index.css or App.css */
+.nav-link {
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -3px; /* Adjust this value to control the distance of the underline from the text */
+  width: 0%;
+  height: 3px; /* Adjust this value to control the thickness of the underline */
+  background-color: #4b5563; /* Adjust this color to match your design */
+  transition: width 0.3s ease; /* Adjust the transition duration if needed */
+}
+
+.nav-link:hover::after,
+.nav-link:focus::after {
+  width: 100%;
+}

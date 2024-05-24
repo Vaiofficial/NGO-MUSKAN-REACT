@@ -1,6 +1,8 @@
 const bcryptjs = require("bcryptjs");
 const User = require("../models/user.model.js");
 const { errorHandler } = require("../utils/error.js");
+const Token = require("../models/token.js");
+
 
 module.exports.test = (req, res) => {
     res.json({
@@ -54,6 +56,36 @@ module.exports.deleteUser = async (req, res, next) => {
         res.status(200).json("User has been deleted");
     } catch (error) {
         next(error);
+    }
+};
+
+
+// VERIFY THE LINK
+module.exports.verifyEmail = async (req, res) => {
+    try {
+        const { userId, token } = req.params;
+        console.log("User ID:", userId);
+        console.log("Token:", token);
+
+        const user = await User.findOne({ _id: userId });
+        if (!user) {
+            console.log("Invalid user ID");
+            return res.status(400).send({ message: "Invalid link" });
+        }
+
+        const tokenRecord = await Token.findOne({ userId: user._id, token });
+        if (!tokenRecord) {
+            console.log("Invalid token");
+            return res.status(400).send({ message: "Invalid link" });
+        }
+
+        await User.updateOne({ _id: user._id }, { verified: true });
+        await Token.deleteOne({ _id: tokenRecord._id });
+
+        res.status(200).send({ message: "Email verified successfully" });
+    } catch (error) {
+        console.error("Error verifying email:", error);
+        res.status(500).send({ message: "Internal Server Error" });
     }
 };
 
