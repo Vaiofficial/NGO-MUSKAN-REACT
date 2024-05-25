@@ -17,7 +17,7 @@ const AdminEvents = () => {
 
   const fetchEvents = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/events/showall");
+      const res = await axios.get("https://ngo-muskan-react-1.onrender.com/api/events/showall");
       setEvents(res.data);
     } catch (err) {
       console.error(err);
@@ -32,7 +32,7 @@ const AdminEvents = () => {
   const handleAddEvent = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:5000/api/events/add", newEvent);
+      await axios.post("https://ngo-muskan-react-1.onrender.com/api/events/add", newEvent);
       fetchEvents();
       setNewEvent({
         title: "",
@@ -48,7 +48,7 @@ const AdminEvents = () => {
 
   const handleDeleteEvent = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/api/events/delete/${id}`);
+      await axios.delete(`https://ngo-muskan-react-1.onrender.com/api/events/delete/${id}`);
       fetchEvents();
     } catch (err) {
       // console.error(err.response.data);

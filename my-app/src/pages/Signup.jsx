@@ -39,7 +39,7 @@ export default function SignUp() {
     }
     try {
       setLoading(true);
-      const res = await fetch("http://localhost:5000/api/auth/signup", {
+      const res = await fetch("https://ngo-muskan-react-1.onrender.com/api/auth/signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
