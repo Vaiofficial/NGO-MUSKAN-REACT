@@ -12,7 +12,7 @@ const EmailVerify = () => {
   useEffect(() => {
     const verifyEmailUrl = async () => {
       try {
-        const url = `https://ngo-muskan-react-1.onrender.com/api/user/${param.id}/verify/${param.token}`;
+        const url = `http://localhost:5000/api/user/${param.id}/verify/${param.token}`;
         const { data } = await axios.get(url);
         console.log(data);
         setValidUrl(true);

@@ -75,7 +75,7 @@ export default function Profile() {
     try {
       dispatch(updateUserStart());
       const res = await fetch(
-        `https://ngo-muskan-react-1.onrender.com/api/user/update/${currentUser._id}`,
+        `http://localhost:5000/api/user/update/${currentUser._id}`,
         {
           method: "POST",
           headers: {
@@ -105,7 +105,7 @@ export default function Profile() {
   const handleSignout = async () => {
     try {
       dispatch(signOutUserStart());
-      const res = await fetch("https://ngo-muskan-react-1.onrender.com/api/auth/signout", {
+      const res = await fetch("http://localhost:5000/api/auth/signout", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -132,7 +132,7 @@ export default function Profile() {
     try {
       dispatch(deleteUserStart());
       const res = await fetch(
-        `https://ngo-muskan-react-1.onrender.com/api/user/delete/${currentUser._id}`,
+        `http://localhost:5000/api/user/delete/${currentUser._id}`,
         {
           method: "DELETE",
           headers: {

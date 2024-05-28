@@ -10,7 +10,7 @@ const EventList = () => {
 
   const fetchEvents = async () => {
     try {
-      const res = await axios.get('https://ngo-muskan-react-1.onrender.com/api/events/showall');
+      const res = await axios.get('http://localhost:5000/api/events/showall');
       setEvents(res.data);
     } catch (err) {
       console.error(err);

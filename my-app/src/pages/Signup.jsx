@@ -33,13 +33,13 @@ export default function SignUp() {
     e.preventDefault();
 
     // If role is admin and secret key is incorrect, show alert
-    if (role === "admin" && secretKey !== "Vaibhav") {
+    if (role === "admin" && secretKey !== process.env.REACT_APP_ADMIN_SECRET_KEY) {
       alert("Invalid Admin");
       return; // Stop execution if secret key is incorrect
     }
     try {
       setLoading(true);
-      const res = await fetch("https://ngo-muskan-react-1.onrender.com/api/auth/signup", {
+      const res = await fetch("http://localhost:5000/api/auth/signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
