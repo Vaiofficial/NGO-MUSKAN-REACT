@@ -7,7 +7,7 @@ module.exports = {
     extend: {
       colors: {
         DonateGreen: '#3fea2c',
-        NavColor: '#F11A7B',
+        NavColor: '#F7418F',
         AboutColor :'#EEEDEB',
         CampaignColor:'#ffc1ca',
         PeopleColor :'#d7d2c9',
