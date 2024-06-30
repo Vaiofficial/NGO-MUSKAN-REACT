@@ -14,6 +14,10 @@ const Navbar = () => {
     setShowMenu(!showMenu);
   };
 
+  const closeMenu = () => {
+    setShowMenu(false);
+  };
+
   return (
     <header className="bg-NavColor">
       <PageLayout>
@@ -96,50 +100,59 @@ const Navbar = () => {
             <NavLink
               to="/"
               className="block px-4 py-2 text-white bg-gray-900 rounded"
+              onClick={closeMenu}
             >
               Home
             </NavLink>
             <NavLink
               to="/about"
               className="block px-4 py-2 text-white bg-gray-900 rounded"
+              onClick={closeMenu}
             >
               About
             </NavLink>
             <NavLink
               to="/events"
               className="block px-4 py-2 text-white bg-gray-900 rounded"
+              onClick={closeMenu}
             >
               Events
             </NavLink>
-            <NavLink
-              to="/admin"
-              className="block px-4 py-2 text-white bg-gray-900 rounded"
-            >
-              Admin
-            </NavLink>
+            {currentUser && currentUser.role === "admin" && (
+              <NavLink
+                to="/admin"
+                className="block px-4 py-2 text-white bg-gray-900 rounded"
+                onClick={closeMenu}
+              >
+                Admin
+              </NavLink>
+            )}
             <NavLink
               to="/mens"
               className="block px-4 py-2 text-white bg-gray-900 rounded"
+              onClick={closeMenu}
             >
               Health
             </NavLink>
             <NavLink
               to="/gallery"
               className="block px-4 py-2 text-white bg-gray-900 rounded"
+              onClick={closeMenu}
             >
               Gallery
             </NavLink>
             <NavLink
               to="/volunteering"
               className="block px-4 py-2 text-white bg-gray-900 rounded"
+              onClick={closeMenu}
             >
               Volunteering
             </NavLink>
-
             {currentUser ? (
               <NavLink
                 to="/profile"
                 className="block px-4 py-2 text-white bg-gray-900 rounded"
+                onClick={closeMenu}
               >
                 Profile
               </NavLink>
@@ -147,6 +160,7 @@ const Navbar = () => {
               <NavLink
                 to="/signin"
                 className="block px-4 py-2 text-white bg-gray-900 rounded"
+                onClick={closeMenu}
               >
                 Signin
               </NavLink>
