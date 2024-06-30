@@ -8,11 +8,12 @@ import PageLayout from "./PageLayout";
 const EmailVerify = () => {
   const [validUrl, setValidUrl] = useState(false);
   const param = useParams();
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
 
   useEffect(() => {
     const verifyEmailUrl = async () => {
       try {
-        const url = `http://localhost:5000/api/user/${param.id}/verify/${param.token}`;
+        const url = `${BASE_URL}/api/user/${param.id}/verify/${param.token}`;
         const { data } = await axios.get(url);
         console.log(data);
         setValidUrl(true);
@@ -22,7 +23,7 @@ const EmailVerify = () => {
       }
     };
     verifyEmailUrl();
-  }, [param]);
+  }, [param, BASE_URL]);
 
   return (
     <Fragment>
@@ -48,5 +49,3 @@ const EmailVerify = () => {
 };
 
 export default EmailVerify;
-
-// http://localhost:5000/api/user/${param.id}/verify/${param.token}`;
