@@ -9,9 +9,11 @@ export default function SignUp() {
   const [msg, setMsg] = useState("");
   const [loading, setLoading] = useState(false);
   const [role, setRole] = useState("");
-  const [showSecretKey, setShowSecretKey] = useState("");
+  const [showSecretKey, setShowSecretKey] = useState(false);
   const [secretKey, setSecretKey] = useState("");
   // const navigate = useNavigate();
+
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
 
   const handleChange = (e) => {
     setFormData({
@@ -33,13 +35,16 @@ export default function SignUp() {
     e.preventDefault();
 
     // If role is admin and secret key is incorrect, show alert
-    if (role === "admin" && secretKey !== process.env.REACT_APP_ADMIN_SECRET_KEY) {
+    if (
+      role === "admin" &&
+      secretKey !== process.env.REACT_APP_ADMIN_SECRET_KEY
+    ) {
       alert("Invalid Admin");
       return; // Stop execution if secret key is incorrect
     }
     try {
       setLoading(true);
-      const res = await fetch("http://localhost:5000/api/auth/signup", {
+      const res = await fetch(`${BASE_URL}/api/auth/signup`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -47,7 +52,7 @@ export default function SignUp() {
         body: JSON.stringify({ ...formData, role }),
       });
       const data = await res.json();
-      setMsg(res.message);
+      setMsg(data.message); // Fix: should use data.message instead of res.message
       setLoading(false);
 
       if (!res.ok) {
