@@ -29,7 +29,7 @@ const Navbar = () => {
               </NavLink>
             </div>
             <div className="hidden space-x-3 lg:space-x-7 md:flex text-sm lg:text-base font-semibold items-center list-none font-montserrat text-white">
-              <NavLink to="/" className="nav-link focus:outline-none focus:"  >
+              <NavLink to="/" className="nav-link focus:outline-none focus:">
                 <li className="">Home</li>
               </NavLink>
               <NavLink to="/about" className="nav-link">

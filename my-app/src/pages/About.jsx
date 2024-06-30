@@ -67,21 +67,22 @@ const About = () => {
               What we do
             </h2>
             <p className="text-lg lg:text-xl font-roboto">
-              <p className="font-bold">Education and Awareness:</p> We conduct
-              workshops, seminars, and campaigns to educate communities about
-              menstrual health, debunk myths, and promote healthy practices.
+              <span className="font-bold">Education and Awareness:</span> We
+              conduct workshops, seminars, and campaigns to educate communities
+              about menstrual health, debunk myths, and promote healthy
+              practices.
             </p>
             <br />
             <p className="text-lg lg:text-xl font-roboto">
-              <p className="font-bold">Access to Products:</p> We work to ensure
-              that menstrual products are accessible to those who need them
-              most, including through distribut
+              <span className="font-bold">Access to Products:</span> We work to
+              ensure that menstrual products are accessible to those who need
+              them most, including through distribut
             </p>
             <br />
             <p className="text-lg lg:text-xl font-roboto">
-              <p className="font-bold">Advocacy and Policy: </p>We advocate for policy changes that
-              support menstrual equity and address barriers to menstrual health
-              and hygiene.
+              <span className="font-bold">Advocacy and Policy: </span>We
+              advocate for policy changes that support menstrual equity and
+              address barriers to menstrual health and hygiene.
             </p>
           </div>
         </div>
