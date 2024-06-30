@@ -22,10 +22,11 @@ const About = () => {
             </h1>
             <div className="py-4">
               <p className="text-lg lg:text-xl mb-5 font-roboto">
-                Muskan is a non-governmental organization committed to creating
-                a society where menstruation is no longer a taboo subject, and
-                where women and girls are not discriminated against or oppressed
-                because of their menstrual status.
+                Welcome to MUSKAN, a passionate advocate for menstrual health
+                and hygiene. Registered in 2003, MUSKAN is dedicated to break
+                the stigma surrounding menstruation and ensuring that every
+                person has access to menstrual health education, products, and
+                support.
               </p>
               <p className="text-lg lg:text-xl mb-10 font-roboto">
                 In addition to our work in menstrual health and hygiene, we also
@@ -52,16 +53,49 @@ const About = () => {
               Our Aim
             </h2>
             <p className="text-lg lg:text-xl font-roboto">
-              Our NGO focuses on promoting menstrual health and hygiene, while
-              combating the stigma attached to menstruation. We strive to
-              empower women and girls by providing them with accurate
-              information, affordable menstrual products, and safe and hygienic
-              menstrual management facilities. Our ultimate goal is to create a
-              society where menstruation is considered a natural biological
-              process, free from discrimination and exclusion. Through advocacy,
-              education, and community engagement, we aim to promote menstrual
-              equity and ensure that every individual who menstruates is able to
-              do so with dignity and respect.
+              MUSKAN’s mission is clear: to promote menstrual equity and empower
+              individuals by providing them with the knowledge, resources, and
+              support they need to manage their menstruation with dignity and
+              confidence.
+            </p>
+          </div>
+        </div>
+        {/* What we do section */}
+        <div className="bg-PeopleColor rounded-md mt-10">
+          <div className="px-8 py-6 lg:py-10">
+            <h2 className="text-5xl font-bold mb-5 text-center text-slate-900 font-montserrat uppercase">
+              What we do
+            </h2>
+            <p className="text-lg lg:text-xl font-roboto">
+              <p className="font-bold">Education and Awareness:</p> We conduct
+              workshops, seminars, and campaigns to educate communities about
+              menstrual health, debunk myths, and promote healthy practices.
+            </p>
+            <br />
+            <p className="text-lg lg:text-xl font-roboto">
+              <p className="font-bold">Access to Products:</p> We work to ensure
+              that menstrual products are accessible to those who need them
+              most, including through distribut
+            </p>
+            <br />
+            <p className="text-lg lg:text-xl font-roboto">
+              <p className="font-bold">Advocacy and Policy: </p>We advocate for policy changes that
+              support menstrual equity and address barriers to menstrual health
+              and hygiene.
+            </p>
+          </div>
+        </div>
+
+        {/* Our Impact */}
+        {/* Aim section */}
+        <div className="bg-PeopleColor rounded-md mt-10">
+          <div className="px-8 py-6 lg:py-10">
+            <h2 className="text-5xl font-bold mb-5 text-center text-slate-900 font-montserrat uppercase">
+              Our Impact
+            </h2>
+            <p className="text-lg lg:text-xl font-roboto">
+              Since our inception, MUSKAN has reached a number of individuals.
+              Through our efforts, we have seen increased awareness, improved
             </p>
           </div>
         </div>

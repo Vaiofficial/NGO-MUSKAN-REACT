@@ -22,12 +22,10 @@ const Volunteering = () => {
             </h1>
             <div className="">
               <p className="text-lg lg:text-xl mb-5 font-roboto text-slate-900 sm:text-balance">
-                Join our passionate community of volunteers and make a
-                difference today! We believe in the power of collective action
-                to bring about positive change in our society. By becoming a
-                volunteer, you'll have the opportunity to contribute your
-                skills, meet like-minded individuals, and make a lasting impact
-                in the lives of those in need.
+                Welcome to the heartbeat of change! At MUSKAN, we're on a
+                mission to transform the narrative around menstruation. Ready to
+                join us in breaking down barriers and empowering communities
+                worldwide?
               </p>
             </div>
             <NavLink to="/">
@@ -51,7 +49,9 @@ const Volunteering = () => {
         {/* TESTIMONIAL SECTION STARTS HERE */}
         <div className="mt-16">
           <div className="text-center mb-10">
-            <h2 className="text-4xl font-bold font-montserrat text-slate-900 uppercase">Testimonials</h2>
+            <h2 className="text-4xl font-bold font-montserrat text-slate-900 uppercase">
+              Testimonials
+            </h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
             {/* Testimonial 01 */}
@@ -62,7 +62,7 @@ const Volunteering = () => {
                 alt="Sadhan Singla"
               />
               <h3 className="text-base sm:text-xl font-semibold mb-2 font-montserrat">
-              Sadhan Singla, Chief Executive Officer
+                Sadhan Singla, Chief Executive Officer
               </h3>
               <p className="text-center text-gray-700 font-roboto">
                 Volunteering here has been an incredibly rewarding experience.
@@ -80,7 +80,7 @@ const Volunteering = () => {
                 alt="Aarushi Juneja"
               />
               <h3 className="text-base sm:text-xl font-semibold mb-2 font-montserrat">
-              Aarushi Juneja, Chief Operating Officer
+                Aarushi Juneja, Chief Operating Officer
               </h3>
               <p className="text-center text-gray-700 font-roboto">
                 Being part of this volunteer program has been one of the best
@@ -98,7 +98,7 @@ const Volunteering = () => {
                 alt="Saumya Katiyar"
               />
               <h3 className="text-base sm:text-xl font-semibold mb-2 font-montserrat">
-              Saumya Katiyar, Media Head
+                Saumya Katiyar, Media Head
               </h3>
               <p className="text-center text-gray-700 font-roboto">
                 As a volunteer administrative assistant, I've gained valuable
@@ -133,17 +133,19 @@ const Volunteering = () => {
         {/* OPPORTUNITIES SECTION STARTS HERE */}
         <div className="mt-10 sm:mt-16">
           <div className="text-center mb-10 sm:mb-16">
-            <h2 className="uppercase text-4xl font-bold text-slate-900 font-montserrat">Volunteer Opportunities</h2>
+            <h2 className="uppercase text-4xl font-bold text-slate-900 font-montserrat">
+              Volunteer Opportunities
+            </h2>
           </div>
           <div className="space-y-10">
             {/* Opportunity 01 */}
             <div className="bg-gray-100 p-5 rounded-lg shadow-md">
               <h3 className="text-2xl font-semibold mb-2 font-roboto text-slate-800">
-                Event Coordination
+                Educational Outreach
               </h3>
               <p className="mb-2 font-roboto text-slate-800">
-                Help us organize and run community events that bring people
-                together and support our cause.
+                Help educate communities about menstrual health and hygiene,
+                breaking stigma, and promoting access to menstrual products.
               </p>
               <p className="text-gray-600">
                 <strong>Requirements:</strong> Good organizational skills,
@@ -153,11 +155,11 @@ const Volunteering = () => {
             {/* Opportunity 02 */}
             <div className="bg-gray-100 p-5 rounded-lg shadow-md">
               <h3 className="text-2xl font-semibold mb-2 font-roboto text-slate-900">
-                Community Outreach
+                Workshops and Events
               </h3>
               <p className="mb-2 text font-roboto text-slate-800">
-                Engage with the community to spread awareness about our programs
-                and recruit new volunteers.
+                Assist in organizing workshops, seminars, and events to raise
+                awareness and provide support for menstruators.
               </p>
               <p className="text-gray-600">
                 <strong>Requirements:</strong> Excellent communication skills, a
@@ -167,15 +169,17 @@ const Volunteering = () => {
             {/* Opportunity 03 */}
             <div className="bg-gray-100 p-5 rounded-lg shadow-md">
               <h3 className="text-2xl font-semibold mb-2 font-roboto text-slate-800">
-                Administrative Support
+                Fundraising and Grant Writing
               </h3>
               <p className="mb-2 font-roboto text-slate-800">
-                Assist with administrative tasks such as data entry, scheduling,
-                and volunteer coordination.
+                Contribute your expertise in fundraising or grant writing to
+                secure resources for our initiatives. 4.Content Creation: Write
+                articles, blog posts, or create social media content to spread
+                awareness and share informative resources.
               </p>
               <p className="text-gray-600">
-                <strong>Requirements:</strong> Attention to detail, proficiency
-                with office software.
+                <strong>Requirements:</strong> Excellent communication skills, a
+                passion for community service.
               </p>
             </div>
             {/* Opportunity 04 */}
@@ -196,10 +200,52 @@ const Volunteering = () => {
         </div>
         {/* OPPORTUNITIES SECTION ENDS HERE */}
 
+        {/* HOW TO GET STARTED SECTION STARTS HERE */}
+        <div className="mt-10 sm:mt-16">
+          <div className="text-center mb-10 sm:mb-16">
+            <h2 className="uppercase text-4xl font-bold text-slate-900 font-montserrat">
+              How to Get Started
+            </h2>
+          </div>
+          <div className="space-y-10">
+            <div className="bg-gray-100 p-5 rounded-lg shadow-md">
+              <h3 className="text-2xl font-semibold mb-2 font-roboto text-slate-800">
+                1. Explore Opportunities
+              </h3>
+              <p className="mb-2 font-roboto text-slate-800">
+                Visit our volunteering portal to view current opportunities and
+                learn more about each role. 
+              </p>
+            </div>
+            <div className="bg-gray-100 p-5 rounded-lg shadow-md">
+              <h3 className="text-2xl font-semibold mb-2 font-roboto text-slate-800">
+                2. Apply
+              </h3>
+              <p className="mb-2 font-roboto text-slate-800">
+                Complete our simple online application form. Tell us about
+                yourself, your interests, and why you want to volunteer with
+                us. 
+              </p>
+            </div>
+            <div className="bg-gray-100 p-5 rounded-lg shadow-md">
+              <h3 className="text-2xl font-semibold mb-2 font-roboto text-slate-800">
+                3. Training and Support
+              </h3>
+              <p className="mb-2 font-roboto text-slate-800">
+                Once accepted, you'll receive training and ongoing support to
+                ensure you're equipped for your role.
+              </p>
+            </div>
+          </div>
+        </div>
+        {/* HOW TO GET STARTED SECTION ENDS HERE */}
+
         {/* contact us or become a volunteer sections starts here */}
         <div>
           <div className="text-center mt-20">
-            <h2 className="text-4xl font-bold font-montserrat text-slate-900 uppercase">Connect With Us</h2>
+            <h2 className="text-4xl font-bold font-montserrat text-slate-900 uppercase">
+              Connect With Us
+            </h2>
           </div>
           <ContactUs></ContactUs>
         </div>

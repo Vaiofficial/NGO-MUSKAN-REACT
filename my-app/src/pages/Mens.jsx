@@ -103,21 +103,24 @@ const Mens = () => {
             </h1>
             <div>
               <p className="text-lg lg:text-xl pt-5 md:p-0 font-roboto">
-                We extend a warm welcome to you, as we embark upon a purposeful
-                voyage within the realm of menstrual health. In this realm, we
-                confront the pressing matters of inadequate access to essential
-                hygiene products and limited education, affecting countless
-                women around the world. Moving forward with unwavering
-                determination, we pledge to shatter the barriers of stigma and
-                ignorance, as we passionately advocate for the noble cause of
-                menstrual justice.
+                Menstruation: Nature's way of nurturing life, stands as a
+                natural cycle that symbolizes creation and renewal. This is what
+                makes menstrual health of the utmost importance.
               </p>
               <p className="text-lg lg:text-xl pt-5 md:p-0 font-roboto">
-                Together, let us soar towards a brighter horizon, where women's
-                health, dignity, and rights flourish with unabated strength.
-                Join us, dear friend, in this magnificent odyssey of
-                transformation and compassion, where the power of change is
-                woven into the very fabric of our being.
+                At NGO Muskan,We warmly welcome you as we embark on a purposeful
+                journey in the realm of menstrual health. In this journey, we
+                confront pressing issues such as inadequate access to essential
+                hygiene products and limited education, impacting countless
+                women worldwide. With unwavering determination, we pledge to
+                break down barriers of stigma and ignorance, passionately
+                rooting for awareness, education and empowerment.
+              </p>
+              <p className="text-lg lg:text-xl pt-5 md:p-0 font-roboto">
+                Together, let us strive towards a brighter horizon where women's
+                health, dignity, and rights thrive with resolute strength. Join
+                us in this transformative and compassionate journey where we
+                hold the power of change in our own selves.
               </p>
             </div>
           </div>
@@ -143,9 +146,7 @@ const Mens = () => {
               <Issue
                 name="Heavy Menstrual Bleeding (Menorrhagia)"
                 image={problem1}
-                description=" Excessive bleeding during periods can lead to fatigue, anemia, and inconvenience, impacting overall well-being and quality of life.
-
-                "
+                description=" Excessive bleeding during periods can lead to fatigue, anemia, and significant inconvenience, which can profoundly impact overall well-being and quality of life."
                 profile="https://www.linkedin.com/in/sadhan-singla/"
               />
               <Issue
@@ -157,7 +158,7 @@ const Mens = () => {
               <Issue
                 name="Premenstrual Syndrome (PMS)"
                 image={problem3}
-                description="Emotional and physical symptoms such as mood swings, irritability, bloating, and breast tenderness often occur in the days leading up to menstruation, affecting mood and productivity."
+                description="Emotional and physical symptoms such as mood swings, irritability, bloating, and breast tenderness often occur in the days leading up to menstruation, impacting mood, productivity, and overall well-being."
                 profile="https://www.linkedin.com/in/sadhan-singla/"
               />
             </div>
@@ -190,14 +191,15 @@ const Mens = () => {
         <div className="flex flex-col lg:flex-row items-center justify-center mt-5">
           {/* Text section Starts Here*/}
           <div className="lg:w-1/2 lg:mr-10 mb-10 lg:mb-0 mt-10 sm:mt-0 px-10 sm:px-0">
-            <h1 className="text-4xl lg:text-6xl font-bold mb-5 lg:mb-10 lg:text-left text-headingPink font-montserrat">
-              SHARE YOUR STRUGGLES WITH US
+            <h1 className="text-4xl lg:text-6xl font-bold mb-5 lg:mb-10 lg:text-left text-headingPink font-montserrat uppercase">
+              Remember You are not alone: SHARE YOUR STRUGGLES WITH US
             </h1>
             <div className="">
               <p className="text-lg lg:text-xl sm:text-left mb-5 font-roboto">
-                Voice your opinions and share your experiences and get a chance
-                to be featured in our website or be approached by our
-                organization.
+                Share your opinions and experiences with us for a chance to be
+                featured on our website or approached by our organization. This
+                is a safe space to share your stories—we're here to listen and
+                support you
               </p>
             </div>
             <div className="px-3 flex justify-center sm:flex-none">
