@@ -21,10 +21,10 @@ module.exports.signup = async (req, res, next) => {
     if (existingUser) {
       return res.status(400).json({ message: "User already exists." });
     }
-    // database mai save karo.
+    // Save user to the database
     await newUser.save();
 
-    // Generate a verification token and database mai entry bhi hogi userid and token
+    // Generate a verification token
     const verificationToken = await new Token({
       userId: newUser._id,
       token: crypto.randomBytes(32).toString("hex"),
@@ -34,7 +34,11 @@ module.exports.signup = async (req, res, next) => {
     const url = `${process.env.BASE_URL}/api/user/${newUser._id}/verify/${verificationToken.token}`;
 
     // Send verification email
-    await sendEmail(newUser.email, "Email Verification", url);
+    await sendEmail(
+      newUser.email,
+      "Email Verification",
+      url.replace("localhost:3000", "celebrated-palmier-a7462a.netlify.app")
+    );
 
     res
       .status(201)
@@ -49,27 +53,25 @@ module.exports.signin = async (req, res, next) => {
   const { email, password } = req.body;
   try {
     const validUser = await User.findOne({ email });
-    if (!validUser) return next(errorHandler(404, "User not found - Create a Account"));
+    if (!validUser)
+      return next(errorHandler(404, "User not found - Create a Account"));
 
     const validPassword = bcryptjs.compareSync(password, validUser.password);
     if (!validPassword) return next(errorHandler(401, "Wrong Credentials"));
 
-    // token create kar rhe hai - yha mistake hoti hai
+    // Create JWT token
     const token = Jwt.sign({ id: validUser._id }, process.env.JWT_SECRET);
-    console.log("token -", token);
     const { password: pass, ...userData } = validUser._doc;
-    // browser mai set kar rhe hai cookie ko jiska header hai access_token
-    res
-      .cookie("access_token", token, {
-        httpOnly: true,
-        secure: process.env.NODE_ENV === "production",
-        sameSite: "Strict",
-        maxAge: 24 * 60 * 60 * 1000,
-      })
-      .status(200)
-      .json({ success: true, ...userData, token });
 
-    // resend the verification link
+    // Set token as cookie
+    res.cookie("access_token", token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "Strict",
+      maxAge: 24 * 60 * 60 * 1000,
+    });
+
+    // Resend the verification link if user is not verified
     if (!validUser.verified) {
       let token = await Token.findOne({ userId: validUser._id });
       if (!token) {
@@ -82,14 +84,19 @@ module.exports.signin = async (req, res, next) => {
       // Construct verification URL
       const url = `${process.env.BASE_URL}/verify/${validUser._id}/${token.token}`;
       // Send verification email
-      await sendEmail(validUser.email, "Email Verification", url);
+      await sendEmail(
+        validUser.email,
+        "Email Verification",
+        url.replace("localhost:3000", "celebrated-palmier-a7462a.netlify.app")
+      );
 
-      return res
-        .status(400)
-        .send({
-          message: "An email has been sent to your account. Please verify.",
-        });
+      return res.status(400).send({
+        message: "An email has been sent to your account. Please verify.",
+      });
     }
+
+    // Send success response with user data and token
+    res.status(200).json({ success: true, ...userData, token });
   } catch (error) {
     next(error);
   }
@@ -155,4 +162,3 @@ module.exports.signOut = async (req, res, next) => {
     next(error);
   }
 };
-
