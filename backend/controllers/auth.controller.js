@@ -4,7 +4,6 @@ const bcryptjs = require("bcryptjs");
 const Jwt = require("jsonwebtoken");
 const { errorHandler } = require("../utils/error");
 const Token = require("../models/token");
-const sendMail = require("../utils/sendEmail");
 const crypto = require("crypto");
 const sendEmail = require("../utils/sendEmail");
 const router = require("express").Router();

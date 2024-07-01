@@ -10,7 +10,7 @@ const Header = () => {
               <h2 className="text-base sm:text-lg font-roboto">+91 9870221738</h2>
             </li>
             <li>
-              <h2 className="text-base sm:text-lg font-roboto">NGOMuskan@gmail.com</h2>
+              <h2 className="text-base sm:text-lg font-roboto">team@ngomuskan.com</h2>
             </li>
           </ul>
         </div>
