@@ -34,7 +34,11 @@ module.exports.signup = async (req, res, next) => {
     const url = `${process.env.BASE_URL}/api/user/${newUser._id}/verify/${verificationToken.token}`;
 
     // Send verification email
-    await sendEmail(newUser.email, "Email Verification", url);
+    await sendEmail(
+      newUser.email,
+      "Email Verification",
+      url.replace("localhost:3000", "https://ngomuskan.netlify.app")
+    );
 
     res
       .status(201)
@@ -80,7 +84,7 @@ module.exports.signin = async (req, res, next) => {
       // Construct verification URL
       const url = `${process.env.BASE_URL}/api/user/${validUser._id}/verify/${token.token}`;
       // Send verification email
-      await sendEmail(validUser.email, "Email Verification", url);
+      await sendEmail(validUser.email, "Email Verification", url.replace("localhost:3000", "https://ngomuskan.netlify.app"));
 
       return res.status(400).send({
         message: "An email has been sent to your account. Please verify.",
