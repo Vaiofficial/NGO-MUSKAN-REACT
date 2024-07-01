@@ -34,43 +34,6 @@ module.exports.signup = async (req, res, next) => {
     const url = `${process.env.BASE_URL}/api/user/${newUser._id}/verify/${verificationToken.token}`;
 
     // Send verification email
-    await sendEmail(
-      newUser.email,
-      "Email Verification",
-      url.replace("localhost:3000", "celebrated-palmier-a7462a.netlify.app")
-    );
-
-    res
-      .status(201)
-      .json({ message: "An email is sent to your account please verify" });
-  } catch (error) {
-    next(error);
-  }
-};
-
-// signup function
-module.exports.signup = async (req, res, next) => {
-  const { username, email, password, role } = req.body;
-  const hashedPassword = bcryptjs.hashSync(password, 10);
-  const newUser = new User({ username, email, password: hashedPassword, role });
-
-  try {
-    // Check if the user already exists
-    const existingUser = await User.findOne({ email });
-    if (existingUser) {
-      return res.status(400).json({ message: "User already exists." });
-    }
-    // Save user to the database
-    await newUser.save();
-
-    // Generate a verification token
-    const verificationToken = await new Token({
-      userId: newUser._id,
-      token: crypto.randomBytes(32).toString("hex"),
-    }).save();
-    // Construct verification URL
-    const url = `${process.env.BASE_URL}/api/user/${newUser._id}/verify/${verificationToken.token}`;
-    // Send verification email
     await sendEmail(newUser.email, "Email Verification", url);
 
     res
