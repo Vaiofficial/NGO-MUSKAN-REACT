@@ -19,7 +19,9 @@ const Work = () => {
               )}
               +
             </h1>
-            <h3 className="text-2xl font-semibold py-2 font-roboto">Meals Provided</h3>
+            <h3 className="text-2xl font-semibold py-2 font-roboto">
+              Meals Provided
+            </h3>
           </div>
           {/* 02 */}
           <div className="rounded-xl p-8 bg-containerPink">
@@ -29,7 +31,9 @@ const Work = () => {
               )}
               +
             </h1>
-            <h3 className="text-2xl font-semibold py-2 font-roboto">Plants Grown</h3>
+            <h3 className="text-2xl font-semibold py-2 font-roboto">
+              Plants Grown
+            </h3>
           </div>
           {/* 03 */}
           <div className="rounded-xl p-8 bg-containerPink">
@@ -39,7 +43,9 @@ const Work = () => {
               )}
               +
             </h1>
-            <h3 className="text-2xl font-semibold py-2  font-roboto">People Treated</h3>
+            <h3 className="text-2xl font-semibold py-2  font-roboto">
+              People Treated
+            </h3>
           </div>
           {/* 04 */}
           <div className="rounded-xl p-8 bg-containerPink">
@@ -49,7 +55,9 @@ const Work = () => {
               )}
               +
             </h1>
-            <h3 className="text-2xl py-2 font-semibold font-roboto">Workshops Conducted</h3>
+            <h3 className="text-2xl py-2 font-semibold font-roboto">
+              Workshops Conducted
+            </h3>
           </div>
         </div>
       </div>

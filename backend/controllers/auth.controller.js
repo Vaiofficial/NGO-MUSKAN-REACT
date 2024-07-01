@@ -68,10 +68,8 @@ module.exports.signup = async (req, res, next) => {
       userId: newUser._id,
       token: crypto.randomBytes(32).toString("hex"),
     }).save();
-
     // Construct verification URL
     const url = `${process.env.BASE_URL}/api/user/${newUser._id}/verify/${verificationToken.token}`;
-
     // Send verification email
     await sendEmail(newUser.email, "Email Verification", url);
 
